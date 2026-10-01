@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
-import { PageTransition } from '../components/ui/PageTransition'
+import { PageWrapper } from '../components/layout/PageWrapper'
 import { PageHeader } from '../components/ui/PageHeader'
 import { PatchBadge } from '../components/ui/PatchBadge'
 import { getDinosaurById } from '../data/dinosaurs'
@@ -12,17 +12,17 @@ export default function DinosaurDetail() {
 
   if (!dino) {
     return (
-      <PageTransition>
+      <PageWrapper>
         <PageHeader title="Динозавр не найден" />
         <Link to="/dinosaurs" className="text-amber-400 hover:underline">
           ← К списку динозавров
         </Link>
-      </PageTransition>
+      </PageWrapper>
     )
   }
 
   return (
-    <PageTransition>
+    <PageWrapper>
       <Link to="/dinosaurs" className="mb-6 inline-flex items-center gap-1 text-sm text-bone-300 hover:text-amber-400">
         <ArrowLeft className="h-4 w-4" /> Все динозавры
       </Link>
@@ -48,6 +48,6 @@ export default function DinosaurDetail() {
           ))}
         </ul>
       </section>
-    </PageTransition>
+    </PageWrapper>
   )
 }

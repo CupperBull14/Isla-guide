@@ -40,3 +40,15 @@
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(#f6b94a, #c27a10);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

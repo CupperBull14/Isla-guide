@@ -1,10 +1,10 @@
-import { PageTransition } from '../components/ui/PageTransition'
+import { PageWrapper } from '../components/layout/PageWrapper'
 import { PageHeader } from '../components/ui/PageHeader'
 import { mechanics } from '../data/mechanics'
 
 export default function Mechanics() {
   return (
-    <PageTransition>
+    <PageWrapper>
       <PageHeader title="Механики" subtitle="Игровые механики Evrima: только проверенные факты с источниками." />
       {mechanics.length === 0 ? (
         <p className="rounded-xl border border-dashed border-isle-500 p-6 text-bone-500">
@@ -20,6 +20,6 @@ export default function Mechanics() {
           ))}
         </div>
       )}
-    </PageTransition>
+    </PageWrapper>
   )
 }

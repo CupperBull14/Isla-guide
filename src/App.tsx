@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { Navbar } from './components/layout/Navbar'
@@ -10,6 +11,10 @@ import Mechanics from './pages/Mechanics'
 
 export default function App() {
   const location = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 })
+  }, [location.pathname])
 
   return (
     <div className="flex min-h-screen flex-col">

@@ -40,6 +40,20 @@ export default {
         display: ['"Unbounded"', 'system-ui', 'sans-serif'],
         sans: ['"Onest"', 'system-ui', 'sans-serif'],
       },
+      keyframes: {
+        'fog-drift': {
+          '0%, 100%': { transform: 'translate3d(-4%, 0, 0)' },
+          '50%': { transform: 'translate3d(6%, -3%, 0)' },
+        },
+        'fog-drift-rev': {
+          '0%, 100%': { transform: 'translate3d(5%, 0, 0)' },
+          '50%': { transform: 'translate3d(-6%, 3%, 0)' },
+        },
+      },
+      animation: {
+        'fog-drift': 'fog-drift 28s ease-in-out infinite',
+        'fog-drift-rev': 'fog-drift-rev 34s ease-in-out infinite',
+      },
       boxShadow: {
         glow: '0 0 40px -10px rgba(246, 185, 74, 0.35)',
       },
