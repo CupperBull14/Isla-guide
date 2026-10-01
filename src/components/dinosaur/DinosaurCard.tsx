@@ -6,10 +6,10 @@ import { categoryLabels, dietLabels } from '../../data/site'
 
 export function DinosaurCard({ dino }: { dino: Dinosaur }) {
   return (
-    <motion.div whileHover={{ y: -4 }} transition={{ type: 'spring', stiffness: 300, damping: 22 }}>
+    <motion.div className="h-full" whileHover={{ y: -4 }} transition={{ type: 'spring', stiffness: 300, damping: 22 }}>
       <Link
         to={`/dinosaurs/${dino.id}`}
-        className="group block rounded-2xl border border-isle-600 bg-isle-800 p-5 transition-colors hover:border-amber-500/60 hover:shadow-glow"
+        className="group flex h-full flex-col rounded-2xl border border-isle-600 bg-isle-800 p-5 transition-colors hover:border-amber-500/60 hover:shadow-glow"
       >
         <div className="text-xs font-semibold uppercase tracking-wider text-moss-400">
           {dietLabels[dino.diet]} · {categoryLabels[dino.category]}
@@ -23,7 +23,7 @@ export function DinosaurCard({ dino }: { dino: Dinosaur }) {
             </span>
           ))}
         </div>
-        <div className="mt-5 flex items-center gap-1 text-sm font-medium text-amber-400">
+        <div className="mt-auto flex items-center gap-1 pt-5 text-sm font-medium text-amber-400">
           Открыть гайд
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </div>
