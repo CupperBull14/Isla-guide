@@ -37,6 +37,7 @@ export function usePageMeta({ title, description, noindex = false }: PageMeta): 
   useEffect(() => {
     const full = title ? `${title} — ${site.name}` : `${site.name} — гайды по The Isle: Evrima`
     const url = `${window.location.origin}${window.location.pathname}`
+    const ogImage = `${window.location.origin}${import.meta.env.BASE_URL}og-image.png`
     document.title = full
     setMeta('name', 'description', description)
     setMeta('name', 'robots', noindex ? 'noindex, nofollow' : 'index, follow')
@@ -46,11 +47,11 @@ export function usePageMeta({ title, description, noindex = false }: PageMeta): 
     setMeta('property', 'og:url', url)
     setMeta('property', 'og:locale', 'ru_RU')
     setMeta('property', 'og:site_name', site.name)
-    setMeta('property', 'og:image', `${window.location.origin}/og-image.png`)
+    setMeta('property', 'og:image', ogImage)
     setMeta('name', 'twitter:card', 'summary_large_image')
     setMeta('name', 'twitter:title', full)
     setMeta('name', 'twitter:description', description)
-    setMeta('name', 'twitter:image', `${window.location.origin}/og-image.png`)
+    setMeta('name', 'twitter:image', ogImage)
     setCanonical(url)
   }, [title, description, noindex])
 }

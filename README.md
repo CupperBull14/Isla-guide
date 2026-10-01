@@ -62,3 +62,12 @@ public/         favicon.svg, og-image.png, robots.txt, _redirects
 
 - В `index.html` замени относительный `og:image` на абсолютный адрес (`https://твой-домен/og-image.png`): соцсети не читают относительные пути.
 - Мета-теги страниц обновляются скриптом (`src/utils/seo.ts`); боты без JS видят значения по умолчанию из `index.html`.
+
+### GitHub Pages (через GitHub Actions)
+
+Уже настроено: `.github/workflows/deploy.yml`, `base` в `vite.config.ts` (берётся из `VITE_BASE`), `basename` у роутера и `404.html` для прямых ссылок.
+
+1. Запушь проект в ветку `master`.
+2. В репозитории: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+3. Вкладка **Actions** покажет сборку; сайт появится по адресу `https://ЛОГИН.github.io/ИМЯ_РЕПОЗИТОРИЯ/`.
+4. Каждый `git push` в `master` публикует свежую версию.
