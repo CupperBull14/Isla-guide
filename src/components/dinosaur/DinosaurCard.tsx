@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import type { Dinosaur } from '../../types'
-import { dietLabels } from '../../data/site'
+import { categoryLabels, dietLabels } from '../../data/site'
 
 export function DinosaurCard({ dino }: { dino: Dinosaur }) {
   return (
@@ -12,7 +12,7 @@ export function DinosaurCard({ dino }: { dino: Dinosaur }) {
         className="group block rounded-2xl border border-isle-600 bg-isle-800 p-5 transition-colors hover:border-amber-500/60 hover:shadow-glow"
       >
         <div className="text-xs font-semibold uppercase tracking-wider text-moss-400">
-          {dietLabels[dino.diet]}
+          {dietLabels[dino.diet]} · {categoryLabels[dino.category]}
         </div>
         <h3 className="mt-2 text-xl font-bold text-bone-100">{dino.nameRu}</h3>
         <p className="text-sm text-bone-500">{dino.name}</p>

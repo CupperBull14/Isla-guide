@@ -1,4 +1,4 @@
-import type { Diet } from '../types'
+import type { Diet, DinoCategory, MatchupBasis, MatchupVerdict } from '../types'
 
 /**
  * Актуальный патч Evrima. Источник: БАЗА_ЗНАНИЙ.md, S1 (Steam-новости The Isle).
@@ -96,4 +96,28 @@ export const dietLabels: Record<Diet, string> = {
   carnivore: 'Хищник',
   herbivore: 'Травоядный',
   omnivore: 'Всеядный',
+}
+
+export const categoryLabels: Record<DinoCategory, string> = {
+  'apex-carnivore': 'Апекс-хищник',
+  'mid-carnivore': 'Средний хищник',
+  'small-carnivore': 'Малый хищник',
+  aquatic: 'Водный апекс',
+  flyer: 'Летающий',
+  'large-herbivore': 'Крупный травоядный',
+  'mid-herbivore': 'Средний травоядный',
+  'small-herbivore': 'Малый травоядный',
+  omnivore: 'Всеядный',
+}
+
+export const verdictLabels: Record<MatchupVerdict, string> = {
+  win: 'Преимущество',
+  risk: 'Риск',
+  flee: 'Бежать',
+}
+
+export const basisLabels: Record<MatchupBasis, string> = {
+  stated: 'прямо сказано в источнике',
+  derived: 'вывод из подтверждённой механики',
+  weak: 'слабый источник, нужна перепроверка',
 }
