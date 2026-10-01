@@ -7,7 +7,7 @@ interface PageWrapperProps {
   fullBleed?: boolean
 }
 
-/** Обёртка страницы: fade/slide-переход (работает вместе с AnimatePresence в App). */
+/** Обёртка страницы: fade/slide-переход. */
 export function PageWrapper({ children, fullBleed = false }: PageWrapperProps) {
   const reduce = useReducedMotion()
   const shift = reduce ? 0 : 16
@@ -17,7 +17,6 @@ export function PageWrapper({ children, fullBleed = false }: PageWrapperProps) {
       id="main"
       initial={{ opacity: 0, y: shift }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -shift / 2 }}
       transition={{ duration: 0.35, ease: 'easeOut' }}
       className={
         fullBleed

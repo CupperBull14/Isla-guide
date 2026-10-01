@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Search } from 'lucide-react'
 import type { Diet, Dinosaur, Matchup, MatchupVerdict } from '../../types'
 import { dinosaurs } from '../../data/dinosaurs'
@@ -148,13 +148,11 @@ export function MatchupMatrix() {
               </tr>
             </thead>
             <tbody>
-              <AnimatePresence initial={false}>
                 {list.map((r, ri) => (
                   <motion.tr
                     key={r.id}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.25, delay: reduce || !intro.current ? 0 : ri * 0.03 }}
                   >
                     <th
@@ -205,7 +203,6 @@ export function MatchupMatrix() {
                     })}
                   </motion.tr>
                 ))}
-              </AnimatePresence>
             </tbody>
           </table>
         </div>
@@ -226,7 +223,7 @@ export function MatchupMatrix() {
         <span className="text-bone-500">Пусто — данных нет; обратное направление пары не выводится.</span>
       </p>
 
-      <AnimatePresence>{popover ? <MatchupPopover key={key(popover.row, popover.col)} target={popover} onClose={closePopover} /> : null}</AnimatePresence>
+      {popover ? <MatchupPopover key={key(popover.row, popover.col)} target={popover} onClose={closePopover} /> : null}
     </div>
   )
 }

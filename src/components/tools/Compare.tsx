@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Check, Crown, X } from 'lucide-react'
 import type { ReactNode } from 'react'
 import type { Dinosaur } from '../../types'
@@ -52,14 +52,11 @@ export function Compare({ ids, onChange }: CompareProps) {
             {/* Шапка */}
             <div className="grid gap-2" style={{ gridTemplateColumns: cols }}>
               <div />
-              <AnimatePresence initial={false} mode="popLayout">
                 {list.map((d) => (
                   <motion.div
                     key={d.id}
-                    layout
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
                     className="relative rounded-2xl border border-isle-600 bg-gradient-to-b from-isle-700 to-isle-800 p-4"
                   >
                     <button
@@ -77,7 +74,6 @@ export function Compare({ ids, onChange }: CompareProps) {
                     <div className="text-xs text-bone-500">{categoryLabels[d.category]}</div>
                   </motion.div>
                 ))}
-              </AnimatePresence>
             </div>
 
             <Block title="Параметры">

@@ -47,7 +47,7 @@ function Segmented<T extends number>({ legend, items, value, onChange }: { legen
 
 function ResultCard({ icon, title, value, note }: { icon: ReactNode; title: string; value: string; note?: string }) {
   return (
-    <motion.div layout className="rounded-2xl border border-isle-600 bg-isle-800 p-4">
+    <motion.div className="rounded-2xl border border-isle-600 bg-isle-800 p-4">
       <div className="flex items-center gap-2 text-sm text-bone-300">
         <span className="text-amber-400">{icon}</span>
         {title}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Leaf } from 'lucide-react'
 import { site } from '../../data/site'
 
@@ -98,14 +98,12 @@ export function Navbar() {
         </button>
       </div>
 
-      <AnimatePresence initial={false}>
         {open ? (
           <motion.nav
             id="mobile-nav"
             key="mobile-nav"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.28, ease: 'easeInOut' }}
             className="overflow-hidden border-t border-white/10 md:hidden"
             aria-label="Мобильная навигация"
@@ -134,7 +132,6 @@ export function Navbar() {
             </ul>
           </motion.nav>
         ) : null}
-      </AnimatePresence>
     </motion.header>
   )
 }

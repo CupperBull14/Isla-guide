@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Calculator, Scale, Sparkles, Swords } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { useSearchParams } from 'react-router-dom'
@@ -63,14 +63,12 @@ export default function Tools() {
       </div>
       <p className="mb-8 max-w-2xl text-sm text-bone-300">{info.description}</p>
 
-      <AnimatePresence mode="wait">
-        <motion.div key={tool} role="tabpanel" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
+        <motion.div key={tool} role="tabpanel" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}>
           {tool === 'picker' ? <Picker /> : null}
           {tool === 'compare' ? <Compare ids={ids} onChange={(next) => update({ ids: next.join(',') })} /> : null}
           {tool === 'calc' ? <LifeCalculator id={id} onChange={(v) => update({ id: v })} /> : null}
           {tool === 'counter' ? <CounterGuide id={id} onChange={(v) => update({ id: v })} /> : null}
         </motion.div>
-      </AnimatePresence>
     </PageWrapper>
   )
 }

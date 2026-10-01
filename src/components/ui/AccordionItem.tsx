@@ -1,5 +1,5 @@
 import { useId, type ReactNode } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 
 interface AccordionItemProps {
@@ -10,7 +10,10 @@ interface AccordionItemProps {
   children: ReactNode
 }
 
-/** Карточка-аккордеон с плавным раскрытием высоты. */
+/**
+ * Карточка-аккордеон. Содержимое всегда в DOM, анимируется только высота —
+ * без AnimatePresence, поэтому «зависнуть» в закрытом состоянии оно не может.
+ */
 export function AccordionItem({ title, subtitle, open, onToggle, children }: AccordionItemProps) {
   const panelId = useId()
   return (
@@ -30,21 +33,19 @@ export function AccordionItem({ title, subtitle, open, onToggle, children }: Acc
           <ChevronDown className="h-5 w-5" />
         </motion.span>
       </button>
-      <AnimatePresence initial={false}>
-        {open ? (
-          <motion.div
-            id={panelId}
-            key="panel"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="overflow-hidden"
-          >
-            <div className="border-t border-isle-600 p-5 pt-4">{children}</div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+      <motion.div
+        id={panelId}
+        role="region"
+        initial={false}
+        animate={{ height: open ? 'auto' : 0, opacity: open ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        style={{ overflow: 'hidden' }}
+        aria-hidden={!open}
+        // @ts-expect-error inert ещё не описан в типах React 18, но поддерживается браузерами
+        inert={open ? undefined : ''}
+      >
+        <div className="border-t border-isle-600 p-5 pt-4">{children}</div>
+      </motion.div>
     </div>
   )
 }

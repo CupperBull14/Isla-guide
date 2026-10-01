@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Check, HelpCircle, RotateCcw, X } from 'lucide-react'
 import type { Dinosaur, PickerQuestionId } from '../../types'
 import { dinosaurs } from '../../data/dinosaurs'
@@ -119,17 +119,14 @@ export function Picker() {
               ? `Видов: ${results.length}. Выбери предпочтения слева — список отсортируется.`
               : `Видов: ${results.length}. Лучшее совпадение — ${best} из ${active}.`}
         </div>
-        <motion.ul layout className="space-y-3">
-          <AnimatePresence initial={false} mode="popLayout">
+        <motion.ul className="space-y-3">
             {results.map(({ dino, criteria: c, score }) => {
               const top = active > 0 && score === best && best > 0
               return (
                 <motion.li
                   key={dino.id}
-                  layout
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
                   transition={{ duration: 0.25 }}
                   className={`rounded-2xl border bg-isle-800 p-4 ${top ? 'border-amber-500/50 shadow-glow' : 'border-isle-600'}`}
                 >
@@ -192,7 +189,6 @@ export function Picker() {
                 </motion.li>
               )
             })}
-          </AnimatePresence>
         </motion.ul>
       </div>
     </div>

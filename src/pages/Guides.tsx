@@ -1,6 +1,6 @@
 import { usePageMeta } from '../utils/seo'
 import { useMemo, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Check, Search } from 'lucide-react'
 import { PageWrapper } from '../components/layout/PageWrapper'
 import { PageHeader } from '../components/ui/PageHeader'
@@ -69,12 +69,10 @@ function FirstDay() {
           })}
         </ol>
 
-        <AnimatePresence mode="wait">
           <motion.div
             key={step.id}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
             className="rounded-2xl border border-isle-600 bg-isle-800 p-5"
           >
@@ -107,7 +105,6 @@ function FirstDay() {
               </button>
             </div>
           </motion.div>
-        </AnimatePresence>
       </div>
     </div>
   )
@@ -136,10 +133,9 @@ function Glossary() {
           className="w-full rounded-xl border border-isle-600 bg-isle-800 py-2.5 pl-10 pr-3 text-base text-bone-100 sm:text-sm placeholder:text-bone-500 focus:border-amber-500/60 focus:outline-none"
         />
       </div>
-      <motion.ul layout className="grid gap-3 sm:grid-cols-2">
-        <AnimatePresence mode="popLayout">
+      <motion.ul className="grid gap-3 sm:grid-cols-2">
           {list.map((t) => (
-            <motion.li key={t.id} layout initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.97 }} transition={{ duration: 0.2 }} className="rounded-xl border border-isle-600 bg-isle-800 p-4">
+            <motion.li key={t.id} initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.2 }} className="rounded-xl border border-isle-600 bg-isle-800 p-4">
               <div className="flex flex-wrap items-baseline gap-x-2">
                 <span className="font-bold text-bone-100">{t.en}</span>
                 <span className="text-sm text-amber-300">{t.ru}</span>
@@ -148,7 +144,6 @@ function Glossary() {
               <SourceLinks sources={[t.source]} label="Источник" />
             </motion.li>
           ))}
-        </AnimatePresence>
       </motion.ul>
       {list.length === 0 ? <p className="mt-6 text-bone-300">Ничего не найдено.</p> : null}
     </div>
@@ -191,11 +186,9 @@ export default function Guides() {
           </button>
         ))}
       </div>
-      <AnimatePresence mode="wait">
-        <motion.div key={tab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
+        <motion.div key={tab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}>
           {tab === 'day' ? <FirstDay /> : tab === 'glossary' ? <Glossary /> : <Faq />}
         </motion.div>
-      </AnimatePresence>
     </PageWrapper>
   )
 }

@@ -12,6 +12,8 @@
 npm install        # установка зависимостей
 npm run dev        # dev-сервер (http://localhost:5173)
 npm run typecheck  # проверка типов
+npm run check      # целостность данных и запрещённые паттерны
+npm run verify     # check + build (запускать перед коммитом)
 npm run build      # проверка типов + сборка в dist/
 npm run preview    # локальный просмотр собранной версии
 ```
@@ -41,6 +43,8 @@ public/         favicon.svg, og-image.png, robots.txt, _redirects
 3. Новый динозавр: создай `dinosaurs/{id}.ts` по типу `Dinosaur` и добавь его в `dinosaurs/index.ts`.
 4. Матчап добавляется в `matchups[]` динозавра-**строки** (вердикт — оценка этого динозавра против `opponent`); обратная пара не выводится автоматически.
 5. Проверь: `npm run build`, затем закоммить и задеплой.
+
+Правила работы над проектом (в том числе для ИИ-ассистента) — `CLAUDE.md`; устройство — `docs/ARCHITECTURE.md`; решения — `docs/DECISIONS.md`; рост нагрузки — `docs/SCALING.md`.
 
 Фактическую базу (факты + источники) веди в `БАЗА_ЗНАНИЙ.md`, прогресс — в `СТАТУС.md`.
 

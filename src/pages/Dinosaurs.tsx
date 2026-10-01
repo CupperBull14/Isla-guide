@@ -1,7 +1,7 @@
 import { usePageMeta } from '../utils/seo'
 import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Search } from 'lucide-react'
 import { PageWrapper } from '../components/layout/PageWrapper'
 import { PageHeader } from '../components/ui/PageHeader'
@@ -85,22 +85,18 @@ export default function Dinosaurs() {
             </div>
           </div>
 
-          <motion.div layout className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <AnimatePresence mode="popLayout">
+          <motion.div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {filtered.map((dino) => (
                 <motion.div
                   key={dino.id}
-                  layout
                   className="h-full"
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.25 }}
                 >
                   <DinosaurCard dino={dino} />
                 </motion.div>
               ))}
-            </AnimatePresence>
           </motion.div>
           {filtered.length === 0 ? <p className="mt-8 text-bone-300">Ничего не найдено.</p> : null}
         </>
