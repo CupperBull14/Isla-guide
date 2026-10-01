@@ -1,5 +1,5 @@
 import { usePageMeta } from '../utils/seo'
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, Calculator, Check, Scale, Swords, X } from 'lucide-react'
 import { PageWrapper } from '../components/layout/PageWrapper'
@@ -8,6 +8,8 @@ import { PatchBadge } from '../components/ui/PatchBadge'
 import { ScrollReveal } from '../components/ui/ScrollReveal'
 import { StatBar } from '../components/dinosaur/StatBar'
 import { GrowthTimeline } from '../components/dinosaur/GrowthTimeline'
+import { GrowthExplorer } from '../components/dinosaur/GrowthExplorer'
+import type { GrowthPath } from '../utils/growth'
 import { MatchupTable } from '../components/dinosaur/MatchupTable'
 import { SectionNav, type NavSection } from '../components/dinosaur/SectionNav'
 import { SourcesList } from '../components/dinosaur/SourcesList'
@@ -19,6 +21,7 @@ const sections: NavSection[] = [
   { id: 'overview', label: 'Обзор' },
   { id: 'stats', label: 'Параметры' },
   { id: 'growth', label: 'Рост' },
+  { id: 'curve', label: 'Статы и Prime' },
   { id: 'spawn', label: 'Первые 10 минут' },
   { id: 'feeding', label: 'Питание' },
   { id: 'matchups', label: 'Матчапы' },
@@ -42,6 +45,8 @@ function Section({ id, title, children }: { id: string; title: string; children:
 export default function DinosaurDetail() {
   const { id } = useParams<{ id: string }>()
   const dino = id ? getDinosaurById(id) : undefined
+  const [pct, setPct] = useState(87.5)
+  const [path, setPath] = useState<GrowthPath>('prime')
   usePageMeta(
     dino
       ? { title: `${dino.nameRu} (${dino.name}) — гайд`, description: `${dino.overview[0].slice(0, 150).trim()}…` }
@@ -120,6 +125,14 @@ export default function DinosaurDetail() {
 
         <Section id="growth" title="Рост по стадиям">
           <GrowthTimeline stages={dino.growth} />
+        </Section>
+
+        <Section id="curve" title="Статы по росту: обычный и Prime">
+          <p className="mb-4 text-sm text-bone-300">
+            Тяни ползунок — вес, здоровье, скорость и Bite пересчитываются на каждом проценте роста. Переключатель показывает разницу между обычной
+            особью и Prime: с 75% у Prime выше вес и характеристики.
+          </p>
+          <GrowthExplorer dino={dino} pct={pct} onPct={setPct} path={path} onPath={setPath} showTable />
         </Section>
 
         <Section id="spawn" title="Свежий спавн: первые 10 минут">

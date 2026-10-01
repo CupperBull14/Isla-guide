@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import type { Diet, Dinosaur } from '../../types'
 import { categoryLabels, dietLabels } from '../../data/site'
 import { formatMinutes, statValue } from '../../utils/dino'
+import { curveMax } from '../../utils/growth'
 
 const accent: Record<Diet, string> = {
   carnivore: 'from-blood-500/70',
@@ -15,10 +16,11 @@ export function DinosaurCard({ dino }: { dino: Dinosaur }) {
   const weight = statValue(dino, 'weight')
   const speed = statValue(dino, 'speed')
   const growth = statValue(dino, 'growth')
+  const primeWeight = curveMax(dino.curve.prime, 'weight')
   const mini: [string, string][] = [
     ['вес', weight === null ? '—' : `${weight.toLocaleString('ru-RU')} кг`],
     ['скорость', speed === null ? '—' : `${speed} км/ч`],
-    ['рост', growth === null ? '—' : formatMinutes(growth)],
+    ['рост ×1', growth === null ? '—' : formatMinutes(growth)],
   ]
 
   return (
@@ -45,6 +47,9 @@ export function DinosaurCard({ dino }: { dino: Dinosaur }) {
             </div>
           ))}
         </dl>
+        {primeWeight !== null && weight !== null && primeWeight > weight ? (
+          <p className="mt-2 text-[11px] text-amber-300/90">Prime: до {primeWeight.toLocaleString('ru-RU')} кг</p>
+        ) : null}
         <div className="mt-4 flex flex-wrap gap-2">
           {dino.tags.map((tag) => (
             <span key={tag} className="rounded-md bg-isle-600 px-2 py-0.5 text-xs text-bone-300">

@@ -21,7 +21,7 @@ export const tenontosaurus: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 1600, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 40.7, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 35, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 340, max: statScales.growth, unit: "мин", note: "5 ч 40 мин", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 340, max: statScales.growth, unit: "мин", note: "5 ч 40 мин при 1 нутриенте; с тремя нутриентами ≈ 1 ч 53 мин (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 60, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 30, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 8, max: 12, unit: "особей", source: 'eqg' },
@@ -61,6 +61,89 @@ export const tenontosaurus: Dinosaur = {
       "details": "Prime Elder: Вес 1600–1830 кг · скорость 40,7–43,2–36,4 км/ч · Bite 35–40,25–31,5\nFrail Elder: Вес 1600 кг · скорость 40,7–31,9 км/ч · Bite 35–24,5"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 1.03,
+        "speed": 5.7,
+        "bite": 0.04
+      },
+      {
+        "pct": 25,
+        "weight": 520,
+        "speed": 41.7,
+        "bite": 10.7
+      },
+      {
+        "pct": 50,
+        "weight": 988,
+        "speed": 44.1,
+        "bite": 20.1
+      },
+      {
+        "pct": 75,
+        "weight": 1600,
+        "speed": 40.7,
+        "bite": 35
+      },
+      {
+        "pct": 87.5,
+        "weight": 1600,
+        "speed": 40.7,
+        "bite": 35
+      },
+      {
+        "pct": 100,
+        "weight": 1600,
+        "speed": 31.9,
+        "bite": 24.5
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 1.03,
+        "speed": 5.7,
+        "bite": 0.04
+      },
+      {
+        "pct": 25,
+        "weight": 520,
+        "speed": 41.7,
+        "bite": 10.7
+      },
+      {
+        "pct": 50,
+        "weight": 988,
+        "speed": 44.1,
+        "bite": 20.1
+      },
+      {
+        "pct": 75,
+        "weight": 1600,
+        "speed": 40.7,
+        "bite": 35
+      },
+      {
+        "pct": 87.5,
+        "weight": 1830,
+        "speed": 43.2,
+        "bite": 40.25
+      },
+      {
+        "pct": 100,
+        "weight": 1830,
+        "speed": 36.4,
+        "bite": 31.5
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта).",
+      "⚠️ Для Prime источник даёт 2 значения на 3 точки (вес): значение на 100% принято равным 87,5%."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 520 кг, скорость 41,7 км/ч, Bite 10,7 (EQG).",
@@ -107,6 +190,13 @@ export const tenontosaurus: Dinosaur = {
       "title": "Evrima Quick Guide — Tenontosaurus",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-herbivores/tenontosaurus",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

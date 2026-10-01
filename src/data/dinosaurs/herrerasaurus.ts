@@ -22,7 +22,7 @@ export const herrerasaurus: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 175, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 45, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 30, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 325, max: statScales.growth, unit: "мин", note: "5 ч 25 мин", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 325, max: statScales.growth, unit: "мин", note: "5 ч 25 мин при 1 нутриенте; с тремя нутриентами ≈ 1 ч 48 мин (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 50, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 45, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 10, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,89 @@ export const herrerasaurus: Dinosaur = {
       "details": "Prime Elder: Вес 175–225 кг · скорость 45–46,8–37,7 км/ч · Bite 30–34,5–24\nFrail Elder: Вес 175 кг · скорость 43,6–28,7 км/ч · Bite 30–18"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 0.21,
+        "speed": 4.7,
+        "bite": 0.04
+      },
+      {
+        "pct": 25,
+        "weight": 64.2,
+        "speed": 25.3,
+        "bite": 10.9
+      },
+      {
+        "pct": 50,
+        "weight": 111.9,
+        "speed": 33.9,
+        "bite": 19.3
+      },
+      {
+        "pct": 75,
+        "weight": 175,
+        "speed": 45,
+        "bite": 30
+      },
+      {
+        "pct": 87.5,
+        "weight": 175,
+        "speed": 43.6,
+        "bite": 30
+      },
+      {
+        "pct": 100,
+        "weight": 175,
+        "speed": 28.7,
+        "bite": 18
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 0.21,
+        "speed": 4.7,
+        "bite": 0.04
+      },
+      {
+        "pct": 25,
+        "weight": 64.2,
+        "speed": 25.3,
+        "bite": 10.9
+      },
+      {
+        "pct": 50,
+        "weight": 111.9,
+        "speed": 33.9,
+        "bite": 19.3
+      },
+      {
+        "pct": 75,
+        "weight": 175,
+        "speed": 45,
+        "bite": 30
+      },
+      {
+        "pct": 87.5,
+        "weight": 225,
+        "speed": 46.8,
+        "bite": 34.5
+      },
+      {
+        "pct": 100,
+        "weight": 225,
+        "speed": 37.7,
+        "bite": 24
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта).",
+      "⚠️ Для Prime источник даёт 2 значения на 3 точки (вес): значение на 100% принято равным 87,5%."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 64,2 кг, скорость 25,3 км/ч, Bite 10,9 (EQG).",
@@ -129,6 +212,13 @@ export const herrerasaurus: Dinosaur = {
       "title": "Evrima Quick Guide — Herrerasaurus",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-carnivores/herrerasaurus",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

@@ -46,6 +46,8 @@ export const refs = {
     date: 'не указана',
   },
   tigHowToPlay: { title: 'theisle.info — How to play', url: 'https://www.theisle.info/guide/how-to-play', date: 'не указана' },
+  tigGrowth: { title: 'theisle.info — Growth guide', url: 'https://www.theisle.info/guide/growth', date: '28 мая 2026' },
+  player: { title: 'Проверено в игре: опытный игрок Evrima, помощник проекта (со слов)', url: '', date: '2 октября 2026' },
   tigPrime: { title: 'theisle.info — Prime & Prime Elder', url: 'https://www.theisle.info/guide/prime', date: '28 мая 2026' },
   xgsApex: {
     title: 'XGamingServer — Best Apex Dinosaurs',

@@ -10,22 +10,23 @@ export const mechanics: Mechanic[] = [
   {
     id: 'growth',
     title: 'Рост',
-    summary: 'Динозавр растёт четырьмя стадиями по 25%. Время роста сильно различается: от 1 ч 50 мин у Hypsilophodon до 35 ч 33 мин у Tyrannosaurus.',
+    summary: 'Динозавр растёт четырьмя стадиями по 25%. Базовое время (один нутриент) — от 1 ч 50 мин у Hypsilophodon до 35 ч 33 мин у Tyrannosaurus; с полной диетой рост примерно втрое быстрее.',
     details: [
       'Игрок обычно появляется Juvenile (25% роста); стадия гнезда доступна только вылупившимся из яиц (EQG).',
       'Здоровье равно весу: 1 кг — 1 HP (EQG, таблицы видов).',
-      'Время роста до 100% по таблицам EQG (4 сентября 2026): Hypsilophodon 1 ч 50 мин, Troodon 3 ч 10 мин, Beipiaosaurus 3 ч 40 мин, Dryosaurus 4 ч 25 мин, Pteranodon 4 ч 30 мин, Herrerasaurus и Gallimimus 5 ч 25 мин, Tenontosaurus 5 ч 40 мин, Omniraptor 5 ч 55 мин, Ceratosaurus и Dilophosaurus 6 ч, Pachycephalosaurus 6 ч 15 мин, Maiasaura 7 ч, Carnotaurus 7 ч 40 мин, Diabloceratops 7 ч 45 мин, Allosaurus 10 ч, Kentrosaurus 11 ч 5 мин, Stegosaurus 17 ч 55 мин, Deinosuchus 23 ч 3 мин, Triceratops 29 ч 10 мин, Tyrannosaurus 35 ч 33 мин. Austroraptor — данных нет.',
+      'Базовое время роста до 100% при одном нутриенте (EQG, 4 сентября 2026; theisle.info подтверждает, что таблицы рассчитаны на один нутриент и x1): Hypsilophodon 1 ч 50 мин, Troodon 3 ч 10 мин, Beipiaosaurus 3 ч 40 мин, Dryosaurus 4 ч 25 мин, Pteranodon 4 ч 30 мин, Herrerasaurus и Gallimimus 5 ч 25 мин, Tenontosaurus 5 ч 40 мин, Omniraptor 5 ч 55 мин, Ceratosaurus и Dilophosaurus 6 ч, Pachycephalosaurus 6 ч 15 мин, Maiasaura 7 ч, Carnotaurus 7 ч 40 мин, Diabloceratops 7 ч 45 мин, Allosaurus 10 ч, Kentrosaurus 11 ч 5 мин, Stegosaurus 17 ч 55 мин, Deinosuchus 23 ч 3 мин, Triceratops 29 ч 10 мин, Tyrannosaurus 35 ч 33 мин. Austroraptor — данных нет.',
       'Мутации: по описанию стороннего источника, всего 42 мутации и ограниченное число выборов за жизнь; с октября 2025 мутации не повышают скорость. Патч 0.21.321 привязал разблокировку мутаций к образу жизни динозавра.',
     ],
     tips: [
-      'Для долгорастущих видов (Triceratops, Tyrannosaurus) закладывай на рост десятки часов реального времени — это следует из таблиц EQG.',
+      'Держи все три нутриента: это втрое сокращает рост. Tyrannosaurus с полной диетой растёт около 12 ч вместо 35 ч 33 мин.',
+      'Посчитать своё время с учётом диеты и множителя сервера можно в «Инструменты → Калькулятор».',
       'Подробные времена по стадиям конкретного вида смотри на его странице в разделе «Динозавры».',
     ],
     caveats: [
-      '⚠️ EQG не указывает, при какой диете (идеальной или нет) измерены времена роста.',
+      '⚠️ Triceratops: EQG — 29 ч 10 мин, theisle.info — около 12 ч базового роста. Расхождение не снято.',
       '⚠️ Число мутаций и лимит выборов взяты из стороннего источника; официального подтверждения нет.',
     ],
-    sources: [refs.eqgCarnivores, refs.eqgHerbivores, refs.eqgOmnivores, refs.patch321, refs.supercraftMutations],
+    sources: [refs.eqgCarnivores, refs.eqgHerbivores, refs.eqgOmnivores, refs.tigGrowth, refs.player, refs.patch321, refs.supercraftMutations],
   },
   {
     id: 'elder-prime',
@@ -36,7 +37,7 @@ export const mechanics: Mechanic[] = [
       'Для Prime нужно выполнить 5 из 10 условий до 75% роста: посетить Sanctuary в юности, быть выведенным из гнезда, достичь идеальной диеты, побывать в зоне массовой миграции, в двух обычных миграционных зонах и в четырёх патрульных зонах, не получить мутацию бесплодия, не страдать мышечными спазмами, вырастить потомство до subadult. Для малых видов (Hypsilophodon, Troodon, Beipiaosaurus, Dryosaurus, Deinosuchus) условие мягче — theisle.info называет четыре из десяти.',
       'Перки Prime Elder по EQG: больше веса, скорости и силы атаки, объёмнее желудок, больше крови и HP переломов, лучше ночное зрение, дополнительный слот мутации.',
       'Elder-стадии не получают бонусов от нутриентов (EQG).',
-      'Entomb: на 100% роста можно «перезапуститься» малышом того же вида с сохранением усиленных мутаций (патч 0.21.321). Entomb Save (хранение персонажей) на момент проверки в публичной ветке отсутствует — он в тестировании (DevBlog #72).',
+      'Entomb: на 100% роста можно «перезапуститься» малышом того же вида с сохранением усиленных мутаций (патч 0.21.321). Лимита на число перерождений нет, но после четырёх Entomb могут начать пропадать первые мутации (опытный игрок, 2 октября 2026). Entomb Save (хранение персонажей) на момент проверки в публичной ветке отсутствует — он в тестировании (DevBlog #72).',
       'Патч 0.21.772 исправил преждевременное получение Prime Elder сразу после 75% роста.',
     ],
     tips: [
@@ -45,9 +46,9 @@ export const mechanics: Mechanic[] = [
     ],
     caveats: [
       '⚠️ Страница EQG про Elder-систему помечена как WIP; theisle.info описывает Frail иначе (как статус тех, кто не получил Prime), чем EQG (деградация после 87,5%). Расхождение не снято.',
-      '⚠️ Лимит циклов Entomb в источниках разный — точных данных нет.',
+      '⚠️ Сторонний источник (Supercraft) называет лимит в 3 цикла — опытный игрок это опровергает: лимита нет, но после 4 перерождений возможна потеря первых мутаций.',
     ],
-    sources: [refs.patch321, refs.eqgElder, refs.tigPrime, refs.patch772, refs.devblog72, refs.supercraftMutations],
+    sources: [refs.patch321, refs.eqgElder, refs.tigPrime, refs.player, refs.patch772, refs.devblog72, refs.supercraftMutations],
   },
   {
     id: 'diet',
@@ -56,7 +57,7 @@ export const mechanics: Mechanic[] = [
     details: [
       'β (белки) — восстановление здоровья; γ (липиды) — заживление переломов; α (углеводы) — регенерация кровотечения (EQG, 3 июля 2026).',
       'У каждого вида свои источники каждого нутриента. Пока не съешь подходящую еду, шкала остаётся на 0% и бонуса нет. Пример Tyrannosaurus: углеводы — Stegosaurus, Tenontosaurus, Pachycephalosaurus; белки — Diabloceratops, Triceratops и мелкие травоядные; липиды — Maiasaura, Gallimimus, Dryosaurus.',
-      'Бонус к росту зависит от числа активных нутриентов. По решению владельца сайта используем оценку «+50% при всех трёх» (XGamingServer, 12 июня 2026).',
+      'Скорость роста зависит от числа активных нутриентов: один — 100%, два — 200%, все три — 300% (EQG; theisle.info, 28 мая 2026). Время роста в таблицах дано для одного нутриента, поэтому с идеальной диетой рост примерно втрое короче.',
       'Соль-лизы (Salt Licks): через TAB можно выбрать, какой нутриент тратится быстрее, и сменить активную диету (EQG).',
       'У травоядных диета определяется миграционными зонами (EQG).',
     ],
@@ -65,9 +66,9 @@ export const mechanics: Mechanic[] = [
       'Не рассчитывай на бонусы нутриентов на Elder-стадиях (EQG).',
     ],
     caveats: [
-      '⚠️ Бонус роста: EQG называет до 300% при трёх нутриентах, XGamingServer — +50%. Сайт использует +50% по решению владельца; первичного подтверждения нет.',
+      'Решение В2 (+50%) пересмотрено: два источника (EQG и theisle.info) и проверка опытного игрока сходятся на ×2/×3. Tyrannosaurus: 35 ч 33 мин при одном нутриенте ≈ 11 ч 51 мин при трёх; игрок называет 12–15 ч с нормальной диетой на x1.',
     ],
-    sources: [refs.eqgDiet, refs.xgsApex, refs.eqgMigration],
+    sources: [refs.eqgDiet, refs.tigGrowth, refs.player, refs.eqgMigration],
   },
   {
     id: 'hunger-thirst',

@@ -22,7 +22,7 @@ export const deinosuchus: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 8000, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 18, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 500, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 1383, max: statScales.growth, unit: "мин", note: "23 ч 3 мин", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 1383, max: statScales.growth, unit: "мин", note: "23 ч 3 мин при 1 нутриенте; с тремя нутриентами ≈ 7 ч 41 мин (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 90, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 10, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 2, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,89 @@ export const deinosuchus: Dinosaur = {
       "details": "Prime Elder: Вес 8000–10700–13500 кг · скорость 18–19,7–21,4 км/ч · Bite 500–575–550\nFrail Elder: Вес 8700–9500 кг · скорость 18,4–18,9 км/ч · Bite 500–450"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 0.6,
+        "speed": 5.5,
+        "bite": 0.55
+      },
+      {
+        "pct": 25,
+        "weight": 678,
+        "speed": 13.3,
+        "bite": 76
+      },
+      {
+        "pct": 50,
+        "weight": 2200,
+        "speed": 15.4,
+        "bite": 212
+      },
+      {
+        "pct": 75,
+        "weight": 8000,
+        "speed": 18,
+        "bite": 500
+      },
+      {
+        "pct": 87.5,
+        "weight": 8700,
+        "speed": 18.4,
+        "bite": 500
+      },
+      {
+        "pct": 100,
+        "weight": 9500,
+        "speed": 18.9,
+        "bite": 450
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 0.6,
+        "speed": 5.5,
+        "bite": 0.55
+      },
+      {
+        "pct": 25,
+        "weight": 678,
+        "speed": 13.3,
+        "bite": 76
+      },
+      {
+        "pct": 50,
+        "weight": 2200,
+        "speed": 15.4,
+        "bite": 212
+      },
+      {
+        "pct": 75,
+        "weight": 8000,
+        "speed": 18,
+        "bite": 500
+      },
+      {
+        "pct": 87.5,
+        "weight": 10700,
+        "speed": 19.7,
+        "bite": 575
+      },
+      {
+        "pct": 100,
+        "weight": 13500,
+        "speed": 21.4,
+        "bite": 550
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта).",
+      "Пик формы — около 98% роста: до этого момента продолжают расти размер и вес; падение Bite к 100% некритично, потому что здоровья больше (со слов опытного игрока, 2 окт 2026)."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 678 кг, скорость 13,3 км/ч, Bite 76 (EQG).",
@@ -103,6 +186,13 @@ export const deinosuchus: Dinosaur = {
       "accessed": "2026-10-01"
     },
     {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
+      "accessed": "2026-10-01"
+    },
+    {
       "id": "apex",
       "title": "XGamingServer — Evrima Best Apex Dinosaurs",
       "url": "https://xgamingserver.com/blog/the-isle-evrima-best-apex-dinosaurs/",
@@ -114,6 +204,13 @@ export const deinosuchus: Dinosaur = {
       "title": "The Isle — Patch 0.21.321 (официальный пост)",
       "url": "https://www.theisle-game.com/en/news/merry-x-mas-and-a-happy-new-patch-0-21-321",
       "date": "2025-12-28",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "player",
+      "title": "Проверено в игре: опытный игрок Evrima, помощник проекта (со слов)",
+      "url": "",
+      "date": "2026-10-02",
       "accessed": "2026-10-01"
     },
     {

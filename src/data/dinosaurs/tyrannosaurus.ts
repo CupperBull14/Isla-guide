@@ -22,7 +22,7 @@ export const tyrannosaurus: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 9300, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 29, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 699, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 2133, max: statScales.growth, unit: "мин", note: "35 ч 33 мин", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 2133, max: statScales.growth, unit: "мин", note: "35 ч 33 мин при 1 нутриенте; с тремя нутриентами ≈ 11 ч 51 мин (рост ×3). Опытный игрок подтверждает: с нормальной диетой на x1 рост занимает 12–15 ч (2 окт 2026).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 75, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 2, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,89 @@ export const tyrannosaurus: Dinosaur = {
       "details": "Prime Elder: Вес 9300–12300 кг · скорость 29–33,7–29,9 км/ч · Bite 700–770–630\nFrail Elder: Вес 9300–9400 кг · скорость 28,4–25,2 км/ч · Bite 700–490"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 4.5,
+        "speed": 11.2,
+        "bite": 0.72
+      },
+      {
+        "pct": 25,
+        "weight": 50,
+        "speed": 25.4,
+        "bite": 5.95
+      },
+      {
+        "pct": 50,
+        "weight": 2800,
+        "speed": 35,
+        "bite": 317
+      },
+      {
+        "pct": 75,
+        "weight": 9300,
+        "speed": 29,
+        "bite": 699
+      },
+      {
+        "pct": 87.5,
+        "weight": 9300,
+        "speed": 28.4,
+        "bite": 700
+      },
+      {
+        "pct": 100,
+        "weight": 9400,
+        "speed": 25.2,
+        "bite": 490
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 4.5,
+        "speed": 11.2,
+        "bite": 0.72
+      },
+      {
+        "pct": 25,
+        "weight": 50,
+        "speed": 25.4,
+        "bite": 5.95
+      },
+      {
+        "pct": 50,
+        "weight": 2800,
+        "speed": 35,
+        "bite": 317
+      },
+      {
+        "pct": 75,
+        "weight": 9300,
+        "speed": 29,
+        "bite": 700
+      },
+      {
+        "pct": 87.5,
+        "weight": 12300,
+        "speed": 33.7,
+        "bite": 770
+      },
+      {
+        "pct": 100,
+        "weight": 12300,
+        "speed": 29.9,
+        "bite": 630
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта).",
+      "⚠️ Для Prime источник даёт 2 значения на 3 точки (вес): значение на 100% принято равным 87,5%."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 50 кг, скорость 25,4 км/ч, Bite 5,95 (EQG).",
@@ -210,10 +293,24 @@ export const tyrannosaurus: Dinosaur = {
       "accessed": "2026-10-01"
     },
     {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
+      "accessed": "2026-10-01"
+    },
+    {
       "id": "patch-0-21-321",
       "title": "The Isle — Patch 0.21.321 (официальный пост)",
       "url": "https://www.theisle-game.com/en/news/merry-x-mas-and-a-happy-new-patch-0-21-321",
       "date": "2025-12-28",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "player",
+      "title": "Проверено в игре: опытный игрок Evrima, помощник проекта (со слов)",
+      "url": "",
+      "date": "2026-10-02",
       "accessed": "2026-10-01"
     }
   ],

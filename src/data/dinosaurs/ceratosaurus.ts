@@ -22,7 +22,7 @@ export const ceratosaurus: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 1450, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 40.3, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 150, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 360, max: statScales.growth, unit: "мин", note: "6 ч ", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 360, max: statScales.growth, unit: "мин", note: "6 ч  при 1 нутриенте; с тремя нутриентами ≈ 2 ч  (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 60, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 45, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 5, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,88 @@ export const ceratosaurus: Dinosaur = {
       "details": "Prime Elder: Вес 1450–1950–1950 кг · скорость 40,3–39,7–36 км/ч · Bite 150–172,5–127,5\nFrail Elder: Вес 1450 кг · скорость 39,4–33,1 км/ч · Bite 150–97,5"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 2.2,
+        "speed": 8.8,
+        "bite": 0.18
+      },
+      {
+        "pct": 25,
+        "weight": 442,
+        "speed": 34.3,
+        "bite": 53.3
+      },
+      {
+        "pct": 50,
+        "weight": 812,
+        "speed": 38.7,
+        "bite": 93.7
+      },
+      {
+        "pct": 75,
+        "weight": 1450,
+        "speed": 40.3,
+        "bite": 150
+      },
+      {
+        "pct": 87.5,
+        "weight": 1450,
+        "speed": 39.4,
+        "bite": 150
+      },
+      {
+        "pct": 100,
+        "weight": 1450,
+        "speed": 33.1,
+        "bite": 97.5
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 2.2,
+        "speed": 8.8,
+        "bite": 0.18
+      },
+      {
+        "pct": 25,
+        "weight": 442,
+        "speed": 34.3,
+        "bite": 53.3
+      },
+      {
+        "pct": 50,
+        "weight": 812,
+        "speed": 38.7,
+        "bite": 93.7
+      },
+      {
+        "pct": 75,
+        "weight": 1450,
+        "speed": 40.3,
+        "bite": 150
+      },
+      {
+        "pct": 87.5,
+        "weight": 1950,
+        "speed": 39.7,
+        "bite": 172.5
+      },
+      {
+        "pct": 100,
+        "weight": 1950,
+        "speed": 36,
+        "bite": 127.5
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта)."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 442 кг, скорость 34,3 км/ч, Bite 53,3 (EQG).",
@@ -114,6 +196,13 @@ export const ceratosaurus: Dinosaur = {
       "title": "Evrima Quick Guide — Ceratosaurus",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-carnivores/ceratosaurus",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

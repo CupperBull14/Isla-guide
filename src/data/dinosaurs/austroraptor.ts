@@ -62,6 +62,89 @@ export const austroraptor: Dinosaur = {
       "details": "Prime Elder: Вес 240–350 кг · скорость 48,1–55,8–46,8 км/ч · Bite 40–46–32\nFrail Elder: Вес 240 кг · скорость 48,1–41,4 км/ч · Bite 40–24"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": null,
+        "speed": null,
+        "bite": null
+      },
+      {
+        "pct": 25,
+        "weight": 12,
+        "speed": 25.2,
+        "bite": 1.2
+      },
+      {
+        "pct": 50,
+        "weight": 120,
+        "speed": 36.7,
+        "bite": 20
+      },
+      {
+        "pct": 75,
+        "weight": 240,
+        "speed": 48.1,
+        "bite": 40
+      },
+      {
+        "pct": 87.5,
+        "weight": 240,
+        "speed": 48.1,
+        "bite": 40
+      },
+      {
+        "pct": 100,
+        "weight": 240,
+        "speed": 41.4,
+        "bite": 24
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": null,
+        "speed": null,
+        "bite": null
+      },
+      {
+        "pct": 25,
+        "weight": 12,
+        "speed": 25.2,
+        "bite": 1.2
+      },
+      {
+        "pct": 50,
+        "weight": 120,
+        "speed": 36.7,
+        "bite": 20
+      },
+      {
+        "pct": 75,
+        "weight": 240,
+        "speed": 48.1,
+        "bite": 40
+      },
+      {
+        "pct": 87.5,
+        "weight": 350,
+        "speed": 55.8,
+        "bite": 46
+      },
+      {
+        "pct": 100,
+        "weight": 350,
+        "speed": 46.8,
+        "bite": 32
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта).",
+      "⚠️ Для Prime источник даёт 2 значения на 3 точки (вес): значение на 100% принято равным 87,5%."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 12 кг, скорость 25,2 км/ч, Bite 1,2 (EQG).",
@@ -136,6 +219,13 @@ export const austroraptor: Dinosaur = {
       "title": "Evrima Quick Guide — Austroraptor",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-carnivores/austroraptor",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

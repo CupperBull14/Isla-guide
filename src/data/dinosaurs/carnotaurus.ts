@@ -22,7 +22,7 @@ export const carnotaurus: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 1300, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 49.5, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 150, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 460, max: statScales.growth, unit: "мин", note: "7 ч 40 мин", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 460, max: statScales.growth, unit: "мин", note: "7 ч 40 мин при 1 нутриенте; с тремя нутриентами ≈ 2 ч 33 мин (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 75, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 3, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,89 @@ export const carnotaurus: Dinosaur = {
       "details": "Prime Elder: Вес 1300–1800 кг · скорость 49,5–55,6–45 км/ч · Bite 150–172,5–120\nFrail Elder: Вес 1300 кг · скорость 48,7–39,6 км/ч · Bite 150–90"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 3.95,
+        "speed": 13.9,
+        "bite": 0.018
+      },
+      {
+        "pct": 25,
+        "weight": 496,
+        "speed": 43.4,
+        "bite": 53
+      },
+      {
+        "pct": 50,
+        "weight": 854,
+        "speed": 47.9,
+        "bite": 94
+      },
+      {
+        "pct": 75,
+        "weight": 1300,
+        "speed": 49.5,
+        "bite": 150
+      },
+      {
+        "pct": 87.5,
+        "weight": 1300,
+        "speed": 48.7,
+        "bite": 150
+      },
+      {
+        "pct": 100,
+        "weight": 1300,
+        "speed": 39.6,
+        "bite": 90
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 3.95,
+        "speed": 13.9,
+        "bite": 0.018
+      },
+      {
+        "pct": 25,
+        "weight": 496,
+        "speed": 43.4,
+        "bite": 53
+      },
+      {
+        "pct": 50,
+        "weight": 854,
+        "speed": 47.9,
+        "bite": 94
+      },
+      {
+        "pct": 75,
+        "weight": 1300,
+        "speed": 49.5,
+        "bite": 150
+      },
+      {
+        "pct": 87.5,
+        "weight": 1800,
+        "speed": 55.6,
+        "bite": 172.5
+      },
+      {
+        "pct": 100,
+        "weight": 1800,
+        "speed": 45,
+        "bite": 120
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта).",
+      "⚠️ Для Prime источник даёт 2 значения на 3 точки (вес): значение на 100% принято равным 87,5%."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 496 кг, скорость 43,4 км/ч, Bite 53 (EQG).",
@@ -115,6 +198,13 @@ export const carnotaurus: Dinosaur = {
       "title": "Evrima Quick Guide — Carnotaurus",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-carnivores/carnotaurus",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

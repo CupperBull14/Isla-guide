@@ -22,7 +22,7 @@ export const hypsilophodon: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 20, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 39.6, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 2, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 110, max: statScales.growth, unit: "мин", note: "1 ч 50 мин", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 110, max: statScales.growth, unit: "мин", note: "1 ч 50 мин при 1 нутриенте; с тремя нутриентами ≈ 37 мин (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 30, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 45, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 10, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,88 @@ export const hypsilophodon: Dinosaur = {
       "details": "Prime Elder: Вес 20–22,5–23 кг · скорость 39,6–39,6–37,8 км/ч · Bite 2–2,3–1,8\nFrail Elder: Вес 20 кг · скорость 34,6–30,6 км/ч · Bite 2–1,4"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 0.023,
+        "speed": 4,
+        "bite": 0
+      },
+      {
+        "pct": 25,
+        "weight": 0.4,
+        "speed": 10.5,
+        "bite": 0.02
+      },
+      {
+        "pct": 50,
+        "weight": 5.7,
+        "speed": 25.9,
+        "bite": 0.05
+      },
+      {
+        "pct": 75,
+        "weight": 20,
+        "speed": 39.6,
+        "bite": 2
+      },
+      {
+        "pct": 87.5,
+        "weight": 20,
+        "speed": 34.6,
+        "bite": 2
+      },
+      {
+        "pct": 100,
+        "weight": 20,
+        "speed": 30.6,
+        "bite": 1.4
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 0.023,
+        "speed": 4,
+        "bite": 0
+      },
+      {
+        "pct": 25,
+        "weight": 0.4,
+        "speed": 10.5,
+        "bite": 0.02
+      },
+      {
+        "pct": 50,
+        "weight": 5.7,
+        "speed": 25.9,
+        "bite": 0.05
+      },
+      {
+        "pct": 75,
+        "weight": 20,
+        "speed": 39.6,
+        "bite": 2
+      },
+      {
+        "pct": 87.5,
+        "weight": 22.5,
+        "speed": 39.6,
+        "bite": 2.3
+      },
+      {
+        "pct": 100,
+        "weight": 23,
+        "speed": 37.8,
+        "bite": 1.8
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта)."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 0,4 кг, скорость 10,5 км/ч, Bite 0,02 (EQG).",
@@ -108,6 +190,13 @@ export const hypsilophodon: Dinosaur = {
       "title": "Evrima Quick Guide — Hypsilophodon",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-herbivores/hypsilophodon",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

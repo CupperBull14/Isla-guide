@@ -22,7 +22,7 @@ export const kentrosaurus: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 1950, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 39.6, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 30, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 665, max: statScales.growth, unit: "мин", note: "11 ч 5 мин", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 665, max: statScales.growth, unit: "мин", note: "11 ч 5 мин при 1 нутриенте; с тремя нутриентами ≈ 3 ч 42 мин (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 90, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 5, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,89 @@ export const kentrosaurus: Dinosaur = {
       "details": "Prime Elder: Вес 1950–2200 кг · скорость 39,6–37,8 км/ч · Bite 30–34,5–25,5\nFrail Elder: Вес 1950 кг · скорость 39,1–34,2 км/ч · Bite 30–19,5"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 1.25,
+        "speed": 4.3,
+        "bite": 0.03
+      },
+      {
+        "pct": 25,
+        "weight": 38,
+        "speed": 17.9,
+        "bite": 0.3
+      },
+      {
+        "pct": 50,
+        "weight": 1000,
+        "speed": 43.9,
+        "bite": 14.01
+      },
+      {
+        "pct": 75,
+        "weight": 1950,
+        "speed": 39.6,
+        "bite": 30
+      },
+      {
+        "pct": 87.5,
+        "weight": 1950,
+        "speed": 39.1,
+        "bite": 30
+      },
+      {
+        "pct": 100,
+        "weight": 1950,
+        "speed": 34.2,
+        "bite": 19.5
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 1.25,
+        "speed": 4.3,
+        "bite": 0.03
+      },
+      {
+        "pct": 25,
+        "weight": 38,
+        "speed": 17.9,
+        "bite": 0.3
+      },
+      {
+        "pct": 50,
+        "weight": 1000,
+        "speed": 43.9,
+        "bite": 14.01
+      },
+      {
+        "pct": 75,
+        "weight": 1950,
+        "speed": 39.6,
+        "bite": 30
+      },
+      {
+        "pct": 87.5,
+        "weight": 2200,
+        "speed": 37.8,
+        "bite": 34.5
+      },
+      {
+        "pct": 100,
+        "weight": 2200,
+        "speed": 37.8,
+        "bite": 25.5
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта).",
+      "⚠️ Для Prime источник даёт 2 значения на 3 точки (вес, скорость): значение на 100% принято равным 87,5%."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 38 кг, скорость 17,9 км/ч, Bite 0,3 (EQG).",
@@ -105,6 +188,13 @@ export const kentrosaurus: Dinosaur = {
       "title": "Evrima Quick Guide — Kentrosaurus",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-herbivores/kentrosaurus",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

@@ -28,6 +28,23 @@ export interface GrowthStage {
   details?: string
 }
 
+/** Точка кривой роста (из таблицы EQG). null — данных нет. */
+export interface GrowthPoint {
+  pct: number
+  weight: number | null
+  speed: number | null
+  bite: number | null
+}
+
+/** Кривая роста: обычный путь (без Prime, Frail после 87,5%) и Prime. */
+export interface GrowthCurve {
+  normal: GrowthPoint[]
+  prime: GrowthPoint[]
+  notes: string[]
+  /** id источника из Dinosaur.sources */
+  source: string
+}
+
 export type MatchupVerdict = 'win' | 'risk' | 'flee'
 
 /**
@@ -63,6 +80,7 @@ export type DinoCategory =
 export interface Source {
   id: string
   title: string
+  /** Пусто — источник без ссылки (например, проверка в игре). */
   url: string
   /** Дата источника (YYYY-MM-DD или «не указана»). */
   date: string
@@ -80,6 +98,7 @@ export interface Dinosaur {
   overview: string[]
   stats: Stat[]
   growth: GrowthStage[]
+  curve: GrowthCurve
   freshSpawn: string[]
   feeding: string
   matchups: Matchup[]

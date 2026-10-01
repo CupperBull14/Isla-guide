@@ -92,7 +92,7 @@ export const glossary: GlossaryTerm[] = [
   { id: 'distress', en: 'Help / Distress', ru: 'Зов о помощи', meaning: 'Тревога для союзников при хищнике рядом или опасности (клавиша 4).', source: refs.xgsCalls },
   { id: 'prime', en: 'Prime', ru: 'Прайм', meaning: 'Постоянный бонус за выполнение 5 из 10 условий жизненного цикла до 75% роста.', source: refs.tigPrime },
   { id: 'frail', en: 'Frail', ru: 'Хилый (Frail)', meaning: 'Статус без Prime; в источниках описывается по-разному (см. раздел «Механики»).', source: refs.tigPrime },
-  { id: 'entomb', en: 'Entomb', ru: 'Энтомб', meaning: 'Перезапуск малышом того же вида на 100% роста с сохранением усиленных мутаций.', source: refs.tigPrime },
+  { id: 'entomb', en: 'Entomb', ru: 'Энтомб', meaning: 'Перезапуск малышом того же вида на 100% роста с сохранением усиленных мутаций. Лимита нет, но после 4 перерождений могут пропадать первые мутации (опытный игрок).', source: refs.tigPrime },
   { id: 'sanctuary', en: 'Sanctuary', ru: 'Санктуарий', meaning: 'Защищённая зона для молодых динозавров.', source: refs.eqgSanctuary },
   { id: 'patrol', en: 'Patrol zone', ru: 'Патрульная зона', meaning: 'Зона хищников, активная при наличии еды и недавней активности игроков.', source: refs.eqgMigration },
   { id: 'migration', en: 'Migration zone', ru: 'Миграционная зона', meaning: 'Зона еды для травоядных, переносится по мере поедания.', source: refs.eqgMigration },

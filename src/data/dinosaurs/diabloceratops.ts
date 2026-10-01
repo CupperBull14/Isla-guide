@@ -22,7 +22,7 @@ export const diabloceratops: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 3000, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 36, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 275, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 465, max: statScales.growth, unit: "мин", note: "7 ч 45 мин", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 465, max: statScales.growth, unit: "мин", note: "7 ч 45 мин при 1 нутриенте; с тремя нутриентами ≈ 2 ч 35 мин (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 80, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 6, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,89 @@ export const diabloceratops: Dinosaur = {
       "details": "Prime Elder: Вес 3000–3900 кг · скорость 34,2–37,8–32,4 км/ч · Bite 275,1–316,25–220\nFrail Elder: Вес 3000 кг · скорость 34,2–28,2 км/ч · Bite 275,1–165"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 3.52,
+        "speed": 3.8,
+        "bite": 0.33
+      },
+      {
+        "pct": 25,
+        "weight": 1065,
+        "speed": 12.8,
+        "bite": 9.06
+      },
+      {
+        "pct": 50,
+        "weight": 1510,
+        "speed": 36,
+        "bite": 130.85
+      },
+      {
+        "pct": 75,
+        "weight": 3000,
+        "speed": 34.2,
+        "bite": 275.1
+      },
+      {
+        "pct": 87.5,
+        "weight": 3000,
+        "speed": 34.2,
+        "bite": 275.1
+      },
+      {
+        "pct": 100,
+        "weight": 3000,
+        "speed": 28.2,
+        "bite": 165
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 3.52,
+        "speed": 3.8,
+        "bite": 0.33
+      },
+      {
+        "pct": 25,
+        "weight": 1065,
+        "speed": 12.8,
+        "bite": 9.06
+      },
+      {
+        "pct": 50,
+        "weight": 1510,
+        "speed": 36,
+        "bite": 130.85
+      },
+      {
+        "pct": 75,
+        "weight": 3000,
+        "speed": 34.2,
+        "bite": 275.1
+      },
+      {
+        "pct": 87.5,
+        "weight": 3900,
+        "speed": 37.8,
+        "bite": 316.25
+      },
+      {
+        "pct": 100,
+        "weight": 3900,
+        "speed": 32.4,
+        "bite": 220
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта).",
+      "⚠️ Для Prime источник даёт 2 значения на 3 точки (вес): значение на 100% принято равным 87,5%."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 1065 кг, скорость 12,8 км/ч, Bite 9,06 (EQG).",
@@ -108,6 +191,13 @@ export const diabloceratops: Dinosaur = {
       "title": "Evrima Quick Guide — Diabloceratops",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-herbivores/diabloceratops",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

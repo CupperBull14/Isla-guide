@@ -22,7 +22,7 @@ export const allosaurus: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 2600, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 39.8, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 175, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 600, max: statScales.growth, unit: "мин", note: "10 ч ", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 600, max: statScales.growth, unit: "мин", note: "10 ч  при 1 нутриенте; с тремя нутриентами ≈ 3 ч 20 мин (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 60, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 3, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,89 @@ export const allosaurus: Dinosaur = {
       "details": "Prime Elder: Вес 2600–3700 кг · скорость 39,8–35,6 км/ч · Bite 175–201–140\nFrail Elder: Вес 2600 кг · скорость 38,6–33,6 км/ч · Bite 175–105"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 2.3,
+        "speed": 13.8,
+        "bite": 0.21
+      },
+      {
+        "pct": 25,
+        "weight": 49.2,
+        "speed": 25.4,
+        "bite": 5.52
+      },
+      {
+        "pct": 50,
+        "weight": 1058,
+        "speed": 41.4,
+        "bite": 79.3
+      },
+      {
+        "pct": 75,
+        "weight": 2600,
+        "speed": 39.8,
+        "bite": 175
+      },
+      {
+        "pct": 87.5,
+        "weight": 2600,
+        "speed": 38.6,
+        "bite": 175
+      },
+      {
+        "pct": 100,
+        "weight": 2600,
+        "speed": 33.6,
+        "bite": 105
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 2.3,
+        "speed": 13.8,
+        "bite": 0.21
+      },
+      {
+        "pct": 25,
+        "weight": 49.2,
+        "speed": 25.4,
+        "bite": 5.52
+      },
+      {
+        "pct": 50,
+        "weight": 1058,
+        "speed": 41.4,
+        "bite": 79.3
+      },
+      {
+        "pct": 75,
+        "weight": 2600,
+        "speed": 39.8,
+        "bite": 175
+      },
+      {
+        "pct": 87.5,
+        "weight": 3700,
+        "speed": 35.6,
+        "bite": 201
+      },
+      {
+        "pct": 100,
+        "weight": 3700,
+        "speed": 35.6,
+        "bite": 140
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта).",
+      "⚠️ Для Prime источник даёт 2 значения на 3 точки (вес, скорость): значение на 100% принято равным 87,5%."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 49,2 кг, скорость 25,4 км/ч, Bite 5,52 (EQG).",
@@ -114,6 +197,13 @@ export const allosaurus: Dinosaur = {
       "title": "Evrima Quick Guide — Allosaurus",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-carnivores/allosaurus",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

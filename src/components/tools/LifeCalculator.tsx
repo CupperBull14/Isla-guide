@@ -1,4 +1,4 @@
-import { useId, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Droplets, Hourglass, Info, Utensils } from 'lucide-react'
@@ -6,6 +6,8 @@ import type { ReactNode } from 'react'
 import { getDinosaurById } from '../../data/dinosaurs'
 import { calcNotes } from '../../data/tools'
 import { formatMinutes, growthTime, statValue } from '../../utils/dino'
+import type { GrowthPath } from '../../utils/growth'
+import { GrowthExplorer } from '../dinosaur/GrowthExplorer'
 import { DinoSelect } from './DinoSelect'
 
 interface Props {
@@ -14,7 +16,34 @@ interface Props {
 }
 
 const sessions = [1, 2, 3, 4, 6] as const
-const stageColors = ['bg-isle-500', 'bg-moss-700', 'bg-moss-500', 'bg-amber-500'] as const
+const nutrients = [
+  { n: 1, label: '1 нутриент', hint: '×1' },
+  { n: 2, label: '2 нутриента', hint: '×2' },
+  { n: 3, label: 'Все 3', hint: '×3' },
+] as const
+const servers = [1, 2, 3] as const
+
+function Segmented<T extends number>({ legend, items, value, onChange }: { legend: string; items: readonly { v: T; label: string; hint?: string }[]; value: T; onChange: (v: T) => void }) {
+  return (
+    <fieldset>
+      <legend className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-bone-500">{legend}</legend>
+      <div className="flex flex-wrap gap-2">
+        {items.map((it) => (
+          <button
+            key={it.v}
+            type="button"
+            aria-pressed={value === it.v}
+            onClick={() => onChange(it.v)}
+            className={`rounded-lg border px-3 py-1.5 text-left text-sm transition-colors ${value === it.v ? 'border-amber-500 bg-amber-500/15 text-amber-200' : 'border-isle-600 text-bone-300 hover:border-isle-500'}`}
+          >
+            {it.label}
+            {it.hint ? <span className="ml-1 text-[11px] text-bone-500">{it.hint}</span> : null}
+          </button>
+        ))}
+      </div>
+    </fieldset>
+  )
+}
 
 function ResultCard({ icon, title, value, note }: { icon: ReactNode; title: string; value: string; note?: string }) {
   return (
@@ -30,151 +59,75 @@ function ResultCard({ icon, title, value, note }: { icon: ReactNode; title: stri
 }
 
 export function LifeCalculator({ id, onChange }: Props) {
-  const sliderId = useId()
   const [pct, setPct] = useState(25)
+  const [path, setPath] = useState<GrowthPath>('normal')
+  const [diet, setDiet] = useState<number>(3)
+  const [server, setServer] = useState<number>(1)
   const [hours, setHours] = useState<number>(2)
   const dino = getDinosaurById(id)
+  const speedUp = diet * server
 
-  const toAdult = dino ? growthTime(dino, pct, 75) : null
-  const toFull = dino ? growthTime(dino, pct, 100) : null
+  const scaled = (from: number, to: number) => {
+    if (!dino) return { minutes: null as number | null, approximate: false }
+    const g = growthTime(dino, from, to)
+    return { minutes: g.minutes === null ? null : g.minutes / speedUp, approximate: g.approximate }
+  }
+  const toAdult = scaled(pct, 75)
+  const toFull = scaled(pct, 100)
   const hunger = dino ? statValue(dino, 'hunger') : null
   const thirst = dino ? statValue(dino, 'thirst') : null
   const sessionMin = hours * 60
-  const stageMinutes = dino?.growth.map((g) => g.minutes) ?? []
-  const perStageKnown = stageMinutes.length === 4 && stageMinutes.every((m) => m !== null)
-  const widths = perStageKnown ? stageMinutes.map((m) => m ?? 0) : [1, 1, 1, 1]
-  const widthTotal = widths.reduce((a, b) => a + b, 0)
-  // Позиция маркера по ВРЕМЕНИ: доля времени роста, прошедшая к текущему проценту
-  const elapsed = dino ? growthTime(dino, 0, pct).minutes : null
-  const totalAll = dino ? growthTime(dino, 0, 100).minutes : null
-  const marker = perStageKnown && elapsed !== null && totalAll ? (elapsed / totalAll) * 100 : pct
-
-  const approx = (e: { approximate: boolean } | null) => (e?.approximate ? '⚠️ оценка по общему времени: по стадиям данных нет' : undefined)
+  const approxNote = (a: boolean) => (a ? '⚠️ оценка по общему времени: по стадиям данных нет' : undefined)
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[20rem_1fr]">
-      <div className="space-y-5">
-        <DinoSelect label="Динозавр" value={id} onChange={onChange} />
-        <div>
-          <label htmlFor={sliderId} className="mb-1.5 flex justify-between text-xs font-semibold uppercase tracking-wider text-bone-500">
-            <span>Текущий рост</span>
-            <span className="text-amber-300">{pct}%</span>
-          </label>
-          <input
-            id={sliderId}
-            type="range"
-            min={0}
-            max={100}
-            step={1}
-            value={pct}
-            onChange={(e) => setPct(Number(e.target.value))}
-            className="w-full accent-amber-400"
-          />
-          <div className="mt-1 flex justify-between text-[11px] text-bone-500">
-            <span>0%</span>
-            <button type="button" onClick={() => setPct(25)} className="hover:text-amber-300">
-              25% — спавн
-            </button>
-            <span>75%</span>
-            <span>100%</span>
-          </div>
-        </div>
-        <fieldset>
-          <legend className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-bone-500">Длина игровой сессии</legend>
-          <div className="flex flex-wrap gap-2">
-            {sessions.map((h) => (
-              <button
-                key={h}
-                type="button"
-                aria-pressed={hours === h}
-                onClick={() => setHours(h)}
-                className={`rounded-lg border px-3 py-1.5 text-sm transition-colors ${
-                  hours === h ? 'border-amber-500 bg-amber-500/15 text-amber-200' : 'border-isle-600 text-bone-300 hover:border-isle-500'
-                }`}
-              >
-                {h} ч
-              </button>
-            ))}
-          </div>
-        </fieldset>
+    <div className="space-y-6">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <DinoSelect label="Динозавр" value={id} onChange={onChange} className="md:col-span-2 lg:col-span-1" />
+        <Segmented legend="Диета" items={nutrients.map((x) => ({ v: x.n as number, label: x.label, hint: x.hint }))} value={diet} onChange={setDiet} />
+        <Segmented legend="Множитель сервера" items={servers.map((s) => ({ v: s as number, label: `x${s}`, hint: s === 1 ? 'официальные' : undefined }))} value={server} onChange={setServer} />
+        <Segmented legend="Сессия" items={sessions.map((h) => ({ v: h as number, label: `${h} ч` }))} value={hours} onChange={setHours} />
       </div>
 
-      <div>
-        {!dino ? (
-          <p className="rounded-2xl border border-dashed border-isle-500 p-8 text-center text-bone-300">Выбери динозавра, чтобы посчитать время роста и питание.</p>
-        ) : (
-          <>
-            <div className="mb-5 rounded-2xl border border-isle-600 bg-isle-800 p-4">
-              <div className="mb-2 flex items-baseline justify-between text-sm">
-                <Link to={`/dinosaurs/${dino.id}`} className="font-display font-bold text-bone-100 hover:text-amber-400">
-                  {dino.nameRu}
-                </Link>
-                <span className="text-bone-500">полный рост {formatMinutes(statValue(dino, 'growth'))}</span>
-              </div>
-              <div className="relative flex h-4 overflow-hidden rounded-full">
-                {dino.growth.map((g, i) => (
-                  <div key={g.name} className={`${stageColors[i]} h-full border-r border-isle-900 last:border-r-0`} style={{ width: `${(widths[i] / widthTotal) * 100}%` }} title={`${g.nameRu}: ${formatMinutes(g.minutes)}`} />
-                ))}
-                <motion.div
-                  className="absolute top-0 h-full w-1 rounded bg-bone-100 shadow-[0_0_8px_rgba(255,255,255,0.8)]"
-                  animate={{ left: `calc(${Math.min(marker, 100)}% - 2px)` }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 26 }}
-                />
-              </div>
-              <div className="mt-2 grid grid-cols-4 gap-1 text-[11px] text-bone-500">
-                {dino.growth.map((g) => (
-                  <span key={g.name}>
-                    {g.nameRu}
-                    <br />
-                    {formatMinutes(g.minutes)}
-                  </span>
-                ))}
-              </div>
-              {!perStageKnown ? <p className="mt-2 text-xs text-amber-300">⚠️ Длительности стадий: данных нет — шкала условная.</p> : null}
-            </div>
+      {!dino ? (
+        <p className="rounded-2xl border border-dashed border-isle-500 p-8 text-center text-bone-300">Выбери динозавра — потяни ползунок роста и смотри, как меняются вес, скорость и Bite, сколько осталось расти и сколько есть.</p>
+      ) : (
+        <>
+          <div className="flex items-baseline justify-between gap-3">
+            <Link to={`/dinosaurs/${dino.id}`} className="font-display text-xl font-bold text-bone-100 hover:text-amber-400">
+              {dino.nameRu}
+            </Link>
+            <span className="text-sm text-bone-500">
+              полный рост: {formatMinutes(statValue(dino, 'growth'))} (×1) → <span className="text-amber-300">{formatMinutes(scaled(0, 100).minutes)}</span> (×{speedUp})
+            </span>
+          </div>
+          <GrowthExplorer dino={dino} pct={pct} onPct={setPct} path={path} onPath={setPath} />
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              <ResultCard
-                icon={<Hourglass className="h-4 w-4" />}
-                title="До взрослой стадии (75%)"
-                value={pct >= 75 ? 'уже взрослый' : formatMinutes(toAdult?.minutes ?? null)}
-                note={pct >= 75 ? undefined : approx(toAdult)}
-              />
-              <ResultCard
-                icon={<Hourglass className="h-4 w-4" />}
-                title="До 100% роста"
-                value={pct >= 100 ? 'рост завершён' : formatMinutes(toFull?.minutes ?? null)}
-                note={pct >= 100 ? undefined : approx(toFull)}
-              />
-              <ResultCard
-                icon={<Utensils className="h-4 w-4" />}
-                title={`Еда за сессию ${hours} ч`}
-                value={hunger === null ? 'данных нет' : `≈ ${(sessionMin / hunger).toLocaleString('ru-RU', { maximumFractionDigits: 1 })} желудка`}
-                note={hunger === null ? undefined : `Полный желудок пустеет за ${formatMinutes(hunger)} — ешь не реже этого.`}
-              />
-              <ResultCard
-                icon={<Droplets className="h-4 w-4" />}
-                title={`Вода за сессию ${hours} ч`}
-                value={thirst === null ? 'данных нет' : `≈ ${(sessionMin / thirst).toLocaleString('ru-RU', { maximumFractionDigits: 1 })} запаса`}
-                note={thirst === null ? undefined : `Полный запас воды кончается за ${formatMinutes(thirst)}.`}
-              />
-            </div>
-            {toFull?.minutes != null && pct < 100 ? (
-              <p className="mt-4 text-sm text-bone-300">
-                При сессиях по {hours} ч до 100% понадобится примерно{' '}
-                <span className="font-semibold text-amber-300">{Math.ceil(toFull.minutes / sessionMin)}</span> сесс. (без учёта бонусов диеты).
-              </p>
-            ) : null}
-          </>
-        )}
-        <ul className="mt-5 space-y-1.5 rounded-xl border border-isle-600 bg-isle-900/60 p-4 text-xs text-bone-500">
-          {calcNotes.map((n) => (
-            <li key={n} className="flex gap-2">
-              <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden /> {n}
-            </li>
-          ))}
-        </ul>
-      </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <ResultCard icon={<Hourglass className="h-4 w-4" />} title="До взрослого (75%)" value={pct >= 75 ? 'уже взрослый' : formatMinutes(toAdult.minutes)} note={pct >= 75 ? undefined : approxNote(toAdult.approximate)} />
+            <ResultCard icon={<Hourglass className="h-4 w-4" />} title="До 100%" value={pct >= 100 ? 'рост завершён' : formatMinutes(toFull.minutes)} note={pct >= 100 ? undefined : approxNote(toFull.approximate) ?? (toFull.minutes !== null ? `≈ ${Math.max(1, Math.ceil(toFull.minutes / sessionMin))} сесс. по ${hours} ч` : undefined)} />
+            <ResultCard
+              icon={<Utensils className="h-4 w-4" />}
+              title={`Еда за ${hours} ч`}
+              value={hunger === null ? 'данных нет' : `≈ ${(sessionMin / hunger).toLocaleString('ru-RU', { maximumFractionDigits: 1 })} желудка`}
+              note={hunger === null ? undefined : `Полный желудок пустеет за ${formatMinutes(hunger)}.`}
+            />
+            <ResultCard
+              icon={<Droplets className="h-4 w-4" />}
+              title={`Вода за ${hours} ч`}
+              value={thirst === null ? 'данных нет' : `≈ ${(sessionMin / thirst).toLocaleString('ru-RU', { maximumFractionDigits: 1 })} запаса`}
+              note={thirst === null ? undefined : `Полный запас воды кончается за ${formatMinutes(thirst)}.`}
+            />
+          </div>
+        </>
+      )}
+
+      <ul className="space-y-1.5 rounded-xl border border-isle-600 bg-isle-900/60 p-4 text-xs text-bone-500">
+        {calcNotes.map((n) => (
+          <li key={n} className="flex gap-2">
+            <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden /> {n}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

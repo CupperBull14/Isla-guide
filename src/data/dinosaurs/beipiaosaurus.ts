@@ -22,7 +22,7 @@ export const beipiaosaurus: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 90, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 32, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 20, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 220, max: statScales.growth, unit: "мин", note: "3 ч 40 мин", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 220, max: statScales.growth, unit: "мин", note: "3 ч 40 мин при 1 нутриенте; с тремя нутриентами ≈ 1 ч 13 мин (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 30, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 20, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 12, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,88 @@ export const beipiaosaurus: Dinosaur = {
       "details": "Prime Elder: Вес 90 кг · скорость 32–32,9–29,5 км/ч · Bite 20–23–16\nFrail Elder: Вес 90 кг · скорость 31,6–26,8 км/ч · Bite 20–12"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 0.106,
+        "speed": 3.6,
+        "bite": 0.02
+      },
+      {
+        "pct": 25,
+        "weight": 2.7,
+        "speed": 10.7,
+        "bite": 0.66
+      },
+      {
+        "pct": 50,
+        "weight": 45.3,
+        "speed": 32.4,
+        "bite": 9.52
+      },
+      {
+        "pct": 75,
+        "weight": 90,
+        "speed": 32,
+        "bite": 20
+      },
+      {
+        "pct": 87.5,
+        "weight": 90,
+        "speed": 31.6,
+        "bite": 20
+      },
+      {
+        "pct": 100,
+        "weight": 90,
+        "speed": 26.8,
+        "bite": 12
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 0.106,
+        "speed": 3.6,
+        "bite": 0.02
+      },
+      {
+        "pct": 25,
+        "weight": 2.7,
+        "speed": 10.7,
+        "bite": 0.66
+      },
+      {
+        "pct": 50,
+        "weight": 45.3,
+        "speed": 32.4,
+        "bite": 9.52
+      },
+      {
+        "pct": 75,
+        "weight": 90,
+        "speed": 32,
+        "bite": 20
+      },
+      {
+        "pct": 87.5,
+        "weight": 90,
+        "speed": 32.9,
+        "bite": 23
+      },
+      {
+        "pct": 100,
+        "weight": 90,
+        "speed": 29.5,
+        "bite": 16
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта)."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 2,7 кг, скорость 10,7 км/ч, Bite 0,66 (EQG).",
@@ -105,6 +187,13 @@ export const beipiaosaurus: Dinosaur = {
       "title": "Evrima Quick Guide — Beipiaosaurus",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-omnivores/beipiaosaurus",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

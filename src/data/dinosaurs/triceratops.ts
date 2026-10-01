@@ -22,7 +22,7 @@ export const triceratops: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 9500, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 23.4, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 900, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону. ⚠️ EQG: 900 на странице вида, 600 в сводной таблице", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 1750, max: statScales.growth, unit: "мин", note: "29 ч 10 мин", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 1750, max: statScales.growth, unit: "мин", note: "29 ч 10 мин при 1 нутриенте; с тремя нутриентами ≈ 9 ч 43 мин (рост ×3). ⚠️ theisle.info (28 мая 2026) называет ≈12 ч базового роста — расхождение с EQG не снято.", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 90, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 4, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,89 @@ export const triceratops: Dinosaur = {
       "details": "Prime Elder: Вес 9500–12500 кг · скорость 23,4–25,1–22 км/ч · Bite 900–1035–810\nFrail Elder: Вес 9500 кг · скорость 23,4–20,7 км/ч · Bite 900–630"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 4.54,
+        "speed": 5.4,
+        "bite": 0.98
+      },
+      {
+        "pct": 25,
+        "weight": 85,
+        "speed": 16.2,
+        "bite": 12.6
+      },
+      {
+        "pct": 50,
+        "weight": 3600,
+        "speed": 26.3,
+        "bite": 435
+      },
+      {
+        "pct": 75,
+        "weight": 9500,
+        "speed": 23.4,
+        "bite": 900
+      },
+      {
+        "pct": 87.5,
+        "weight": 9500,
+        "speed": 23.4,
+        "bite": 900
+      },
+      {
+        "pct": 100,
+        "weight": 9500,
+        "speed": 20.7,
+        "bite": 630
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 4.54,
+        "speed": 5.4,
+        "bite": 0.98
+      },
+      {
+        "pct": 25,
+        "weight": 85,
+        "speed": 16.2,
+        "bite": 12.6
+      },
+      {
+        "pct": 50,
+        "weight": 3600,
+        "speed": 26.3,
+        "bite": 435
+      },
+      {
+        "pct": 75,
+        "weight": 9500,
+        "speed": 23.4,
+        "bite": 900
+      },
+      {
+        "pct": 87.5,
+        "weight": 12500,
+        "speed": 25.1,
+        "bite": 1035
+      },
+      {
+        "pct": 100,
+        "weight": 12500,
+        "speed": 22,
+        "bite": 810
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта).",
+      "⚠️ Для Prime источник даёт 2 значения на 3 точки (вес): значение на 100% принято равным 87,5%."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 85 кг, скорость 16,2 км/ч, Bite 12,6 (EQG).",
@@ -158,6 +241,13 @@ export const triceratops: Dinosaur = {
       "title": "Evrima Quick Guide — Triceratops",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-herbivores/triceratops",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

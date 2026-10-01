@@ -22,7 +22,7 @@ export const dryosaurus: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 130, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 45, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 20, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 265, max: statScales.growth, unit: "мин", note: "4 ч 25 мин", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 265, max: statScales.growth, unit: "мин", note: "4 ч 25 мин при 1 нутриенте; с тремя нутриентами ≈ 1 ч 28 мин (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 30, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 45, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 10, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,88 @@ export const dryosaurus: Dinosaur = {
       "details": "Prime Elder: Вес 130–185–185 кг · скорость 45–50,4–39,6 км/ч · Bite 20–23–16\nFrail Elder: Вес 130 кг · скорость 44–32,4 км/ч · Bite 20–12"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 0.155,
+        "speed": 5.6,
+        "bite": 0.02
+      },
+      {
+        "pct": 25,
+        "weight": 23.2,
+        "speed": 29.8,
+        "bite": 4.5
+      },
+      {
+        "pct": 50,
+        "weight": 60.7,
+        "speed": 39.3,
+        "bite": 9.4
+      },
+      {
+        "pct": 75,
+        "weight": 130,
+        "speed": 45,
+        "bite": 20
+      },
+      {
+        "pct": 87.5,
+        "weight": 130,
+        "speed": 44,
+        "bite": 20
+      },
+      {
+        "pct": 100,
+        "weight": 130,
+        "speed": 32.4,
+        "bite": 12
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 0.155,
+        "speed": 5.6,
+        "bite": 0.02
+      },
+      {
+        "pct": 25,
+        "weight": 23.2,
+        "speed": 29.8,
+        "bite": 4.5
+      },
+      {
+        "pct": 50,
+        "weight": 60.7,
+        "speed": 39.3,
+        "bite": 9.4
+      },
+      {
+        "pct": 75,
+        "weight": 130,
+        "speed": 45,
+        "bite": 20
+      },
+      {
+        "pct": 87.5,
+        "weight": 185,
+        "speed": 50.4,
+        "bite": 23
+      },
+      {
+        "pct": 100,
+        "weight": 185,
+        "speed": 39.6,
+        "bite": 16
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта)."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 23,2 кг, скорость 29,8 км/ч, Bite 4,5 (EQG).",
@@ -122,6 +204,13 @@ export const dryosaurus: Dinosaur = {
       "title": "Evrima Quick Guide — Dryosaurus",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-herbivores/dryosaurus",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

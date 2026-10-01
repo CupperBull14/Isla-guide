@@ -22,7 +22,7 @@ export const omniraptor: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 395, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 46.8, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 65, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 355, max: statScales.growth, unit: "мин", note: "5 ч 55 мин", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 355, max: statScales.growth, unit: "мин", note: "5 ч 55 мин при 1 нутриенте; с тремя нутриентами ≈ 1 ч 58 мин (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 50, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 8, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,89 @@ export const omniraptor: Dinosaur = {
       "details": "Prime Elder: Вес 394,9–660 кг · скорость 46,8–52,3–43,2 км/ч · Bite 65–75,75–58,5\nFrail Elder: Вес 395 кг · скорость 46,1–35,1 км/ч · Bite 65–45,5"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 0.607,
+        "speed": 8.8,
+        "bite": 0.08
+      },
+      {
+        "pct": 25,
+        "weight": 129.5,
+        "speed": 46.9,
+        "bite": 14.3
+      },
+      {
+        "pct": 50,
+        "weight": 274.5,
+        "speed": 50.2,
+        "bite": 28.5
+      },
+      {
+        "pct": 75,
+        "weight": 395,
+        "speed": 46.8,
+        "bite": 65
+      },
+      {
+        "pct": 87.5,
+        "weight": 395,
+        "speed": 46.1,
+        "bite": 65
+      },
+      {
+        "pct": 100,
+        "weight": 395,
+        "speed": 35.1,
+        "bite": 45.5
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 0.607,
+        "speed": 8.8,
+        "bite": 0.08
+      },
+      {
+        "pct": 25,
+        "weight": 129.5,
+        "speed": 46.9,
+        "bite": 14.3
+      },
+      {
+        "pct": 50,
+        "weight": 274.5,
+        "speed": 50.2,
+        "bite": 28.5
+      },
+      {
+        "pct": 75,
+        "weight": 394.9,
+        "speed": 46.8,
+        "bite": 65
+      },
+      {
+        "pct": 87.5,
+        "weight": 660,
+        "speed": 52.3,
+        "bite": 75.75
+      },
+      {
+        "pct": 100,
+        "weight": 660,
+        "speed": 43.2,
+        "bite": 58.5
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта).",
+      "⚠️ Для Prime источник даёт 2 значения на 3 точки (вес): значение на 100% принято равным 87,5%."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 129,5 кг, скорость 46,9 км/ч, Bite 14,3 (EQG).",
@@ -129,6 +212,13 @@ export const omniraptor: Dinosaur = {
       "title": "Evrima Quick Guide — Omniraptor",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-carnivores/omniraptor",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

@@ -30,6 +30,7 @@ export function GrowthTimeline({ stages }: { stages: GrowthStage[] }) {
             </h3>
             <span className="text-sm font-semibold text-amber-300">
               {formatMinutes(stage.minutes)}
+              {stage.minutes !== null ? <span className="ml-2 text-xs font-normal text-bone-500">≈ {formatMinutes(Math.round(stage.minutes / 3))} с 3 нутриентами</span> : null}
               {stage.age ? <span className="ml-2 font-normal text-bone-500">({stage.age})</span> : null}
             </span>
           </div>

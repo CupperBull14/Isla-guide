@@ -22,7 +22,7 @@ export const maiasaura: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 3700, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 42.3, max: statScales.speed, unit: "км/ч", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 50, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 420, max: statScales.growth, unit: "мин", note: "7 ч ", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 420, max: statScales.growth, unit: "мин", note: "7 ч  при 1 нутриенте; с тремя нутриентами ≈ 2 ч 20 мин (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 60, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 30, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 10, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,88 @@ export const maiasaura: Dinosaur = {
       "details": "Prime Elder: Вес 3700–5300–5400 кг · скорость 42,3–40,1–37,8 км/ч · Bite 50–57,5–40\nFrail Elder: Вес 3700 кг · скорость 39,1–36 км/ч · Bite 50–30"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 4.53,
+        "speed": 9.8,
+        "bite": 0.06
+      },
+      {
+        "pct": 25,
+        "weight": 83,
+        "speed": 19.4,
+        "bite": 1.5
+      },
+      {
+        "pct": 50,
+        "weight": 1875,
+        "speed": 46.9,
+        "bite": 23.64
+      },
+      {
+        "pct": 75,
+        "weight": 3700,
+        "speed": 42.3,
+        "bite": 50
+      },
+      {
+        "pct": 87.5,
+        "weight": 3700,
+        "speed": 39.1,
+        "bite": 50
+      },
+      {
+        "pct": 100,
+        "weight": 3700,
+        "speed": 36,
+        "bite": 30
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 4.53,
+        "speed": 9.8,
+        "bite": 0.06
+      },
+      {
+        "pct": 25,
+        "weight": 83,
+        "speed": 19.4,
+        "bite": 1.5
+      },
+      {
+        "pct": 50,
+        "weight": 1875,
+        "speed": 46.9,
+        "bite": 23.64
+      },
+      {
+        "pct": 75,
+        "weight": 3700,
+        "speed": 42.3,
+        "bite": 50
+      },
+      {
+        "pct": 87.5,
+        "weight": 5300,
+        "speed": 40.1,
+        "bite": 57.5
+      },
+      {
+        "pct": 100,
+        "weight": 5400,
+        "speed": 37.8,
+        "bite": 40
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта)."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес 83 кг, скорость 19,4 км/ч, Bite 1,5 (EQG).",
@@ -107,6 +189,13 @@ export const maiasaura: Dinosaur = {
       "title": "Evrima Quick Guide — Maiasaura",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-herbivores/maiasaura",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {

@@ -22,7 +22,7 @@ export const stegosaurus: Dinosaur = {
     { key: 'weight', label: "Вес взрослого", value: 6000, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
     { key: 'speed', label: "Скорость взрослого", value: 26.2, max: statScales.speed, unit: "км/ч", note: "⚠️ EQG: 26,2 в сводной таблице, 29,1 в строке Sub Adult", source: 'eqg' },
     { key: 'bite', label: "Bite Force", value: 50, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { key: 'growth', label: "Время роста", value: 1075, max: statScales.growth, unit: "мин", note: "17 ч 55 мин", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 1075, max: statScales.growth, unit: "мин", note: "17 ч 55 мин при 1 нутриенте; с тремя нутриентами ≈ 5 ч 58 мин (рост ×3).", source: 'eqg' },
     { key: 'hunger', label: "Голод: 100→0%", value: 90, max: statScales.hunger, unit: "мин", source: 'eqg' },
     { key: 'thirst', label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
     { key: 'pack', label: "Лимит стаи", value: 5, max: 12, unit: "особей", source: 'eqg' },
@@ -62,6 +62,89 @@ export const stegosaurus: Dinosaur = {
       "details": "Prime Elder: Вес 6000–9300 кг · скорость 25,2–30,6 км/ч · Bite 45–57,5\nFrail Elder: Вес 6000 кг · скорость 24,3–28,4 км/ч · Bite 37,5–50"
     }
   ],
+  curve: {
+    "normal": [
+      {
+        "pct": 0,
+        "weight": 5.6,
+        "speed": 5.7,
+        "bite": 0.06
+      },
+      {
+        "pct": 25,
+        "weight": null,
+        "speed": 29,
+        "bite": 8.4
+      },
+      {
+        "pct": 50,
+        "weight": 2900,
+        "speed": null,
+        "bite": 28.4
+      },
+      {
+        "pct": 75,
+        "weight": 6000,
+        "speed": null,
+        "bite": 50
+      },
+      {
+        "pct": 87.5,
+        "weight": 6000,
+        "speed": 24.3,
+        "bite": 37.5
+      },
+      {
+        "pct": 100,
+        "weight": 6000,
+        "speed": 28.4,
+        "bite": 50
+      }
+    ],
+    "prime": [
+      {
+        "pct": 0,
+        "weight": 5.6,
+        "speed": 5.7,
+        "bite": 0.06
+      },
+      {
+        "pct": 25,
+        "weight": null,
+        "speed": 29,
+        "bite": 8.4
+      },
+      {
+        "pct": 50,
+        "weight": 2900,
+        "speed": null,
+        "bite": 28.4
+      },
+      {
+        "pct": 75,
+        "weight": 6000,
+        "speed": 25.2,
+        "bite": 45
+      },
+      {
+        "pct": 87.5,
+        "weight": 9300,
+        "speed": 30.6,
+        "bite": 57.5
+      },
+      {
+        "pct": 100,
+        "weight": 9300,
+        "speed": 30.6,
+        "bite": 57.5
+      }
+    ],
+    "notes": [
+      "Точки 0, 25, 50, 75, 87,5 и 100% — из таблицы EQG; между точками значения рассчитаны линейно (оценка сайта).",
+      "⚠️ Для Prime источник даёт 2 значения на 3 точки (Bite, вес, скорость): значение на 100% принято равным 87,5%."
+    ],
+    "source": "eqg"
+  },
   freshSpawn: [
     ...freshSpawnGeneral,
     "Стартовая стадия — Juvenile (25% роста): вес данных нет (в источнике опечатка) кг, скорость 29 км/ч, Bite 8,4 (EQG).",
@@ -158,6 +241,13 @@ export const stegosaurus: Dinosaur = {
       "title": "Evrima Quick Guide — Stegosaurus",
       "url": "https://www.evrimaquickguide.com/playables/quick-facts-herbivores/stegosaurus",
       "date": "не указана",
+      "accessed": "2026-10-01"
+    },
+    {
+      "id": "tig-growth",
+      "title": "theisle.info — Growth guide (базовое время = 1 нутриент, ×2/×3 от диеты)",
+      "url": "https://www.theisle.info/guide/growth",
+      "date": "2026-05-28",
       "accessed": "2026-10-01"
     },
     {
