@@ -88,10 +88,48 @@ export interface Dinosaur {
   sources: Source[]
 }
 
+/** Ссылка на источник для механик и гайдов. */
+export interface SourceRef {
+  title: string
+  url: string
+  /** Дата источника или «не указана». */
+  date: string
+}
+
 export interface Mechanic {
   id: string
   title: string
   summary: string
   details: string[]
   tips: string[]
+  /** Что неясно или противоречит друг другу (⚠️). */
+  caveats?: string[]
+  sources: SourceRef[]
+}
+
+export interface GuideStep {
+  id: string
+  /** Ориентир по времени, например «0–2 мин». Не игровая константа. */
+  when: string
+  title: string
+  body: string
+  checklist: string[]
+  sources: SourceRef[]
+}
+
+export interface GlossaryTerm {
+  id: string
+  en: string
+  ru: string
+  /** Расшифровка своими словами. */
+  meaning: string
+  source: SourceRef
+}
+
+export interface FaqItem {
+  id: string
+  question: string
+  answer: string
+  caveat?: string
+  sources: SourceRef[]
 }
