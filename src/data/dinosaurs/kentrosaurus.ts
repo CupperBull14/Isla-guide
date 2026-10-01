@@ -19,14 +19,14 @@ export const kentrosaurus: Dinosaur = {
     "Рост самый долгий в этой группе — 11 ч 5 мин. Желудок пустеет за 90 минут, вода — за 60. Стая — до 5 особей, гнездо Mound до 5 яиц."
   ],
   stats: [
-    { label: "Вес взрослого", value: 1950, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
-    { label: "Скорость взрослого", value: 39.6, max: statScales.speed, unit: "км/ч", source: 'eqg' },
-    { label: "Bite Force", value: 30, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { label: "Время роста", value: 665, max: statScales.growth, unit: "мин", note: "11 ч 5 мин", source: 'eqg' },
-    { label: "Голод: 100→0%", value: 90, max: statScales.hunger, unit: "мин", source: 'eqg' },
-    { label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
-    { label: "Лимит стаи", value: 5, max: 12, unit: "особей", source: 'eqg' },
-    { label: "Яиц в кладке", value: 5, max: 8, unit: "шт.", note: "Тип гнезда: Mound.", source: 'eqg' },
+    { key: 'weight', label: "Вес взрослого", value: 1950, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
+    { key: 'speed', label: "Скорость взрослого", value: 39.6, max: statScales.speed, unit: "км/ч", source: 'eqg' },
+    { key: 'bite', label: "Bite Force", value: 30, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 665, max: statScales.growth, unit: "мин", note: "11 ч 5 мин", source: 'eqg' },
+    { key: 'hunger', label: "Голод: 100→0%", value: 90, max: statScales.hunger, unit: "мин", source: 'eqg' },
+    { key: 'thirst', label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
+    { key: 'pack', label: "Лимит стаи", value: 5, max: 12, unit: "особей", source: 'eqg' },
+    { key: 'eggs', label: "Яиц в кладке", value: 5, max: 8, unit: "шт.", note: "Тип гнезда: Mound.", source: 'eqg' },
   ],
   growth: [
     {

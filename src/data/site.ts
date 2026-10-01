@@ -29,10 +29,11 @@ export const site = {
     { to: '/dinosaurs', label: 'Динозавры' },
     { to: '/guides', label: 'Гайды' },
     { to: '/mechanics', label: 'Механики' },
+    { to: '/tools', label: 'Инструменты' },
   ],
 } as const
 
-export type SectionIcon = 'dinosaurs' | 'guides' | 'mechanics' | 'matchups'
+export type SectionIcon = 'dinosaurs' | 'guides' | 'mechanics' | 'matchups' | 'picker' | 'compare'
 
 export interface HomeSection {
   to: string
@@ -57,14 +58,26 @@ export const homeSections: readonly HomeSection[] = [
   {
     to: '/guides',
     title: 'Гайды',
-    description: 'Сквозные руководства: первый час, выбор вида, типичные ошибки новичков.',
+    description: 'Первый день на острове по шагам, глоссарий терминов и ответы на частые вопросы.',
     icon: 'guides',
   },
   {
-    to: '/dinosaurs',
+    to: '/dinosaurs?tab=matrix',
     title: 'Матрица матчапов',
-    description: 'Таблица «кто кого» — появится после подтверждённых данных. Выдуманных вердиктов не будет.',
+    description: 'Таблица «кто кого» по всему ростеру. Только подтверждённые вердикты — пустая клетка честно значит «данных нет».',
     icon: 'matchups',
+  },
+  {
+    to: '/tools?tool=picker',
+    title: 'Подбор динозавра',
+    description: 'Несколько вопросов о стиле игры — и список видов, которые подходят по параметрам.',
+    icon: 'picker',
+  },
+  {
+    to: '/tools?tool=compare',
+    title: 'Сравнение и калькулятор',
+    description: 'До трёх видов рядом, время роста до взрослого и расход еды и воды за сессию.',
+    icon: 'compare',
   },
 ]
 

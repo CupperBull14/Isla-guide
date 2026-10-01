@@ -1,5 +1,6 @@
 import { usePageMeta } from '../utils/seo'
 import { useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Search } from 'lucide-react'
 import { PageWrapper } from '../components/layout/PageWrapper'
@@ -18,7 +19,9 @@ const dietFilters: readonly DietFilter[] = ['all', 'carnivore', 'herbivore', 'om
 
 export default function Dinosaurs() {
   usePageMeta({ title: 'Динозавры', description: 'Каталог всех играбельных динозавров The Isle: Evrima: параметры, рост, питание и матрица матчапов с источниками.' })
-  const [tab, setTab] = useState<Tab>('catalog')
+  const [params, setParams] = useSearchParams()
+  const tab: Tab = params.get('tab') === 'matrix' ? 'matrix' : 'catalog'
+  const setTab = (t: Tab) => setParams(t === 'matrix' ? { tab: 'matrix' } : {}, { replace: true })
   const [diet, setDiet] = useState<DietFilter>('all')
   const [query, setQuery] = useState('')
 

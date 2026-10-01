@@ -19,14 +19,14 @@ export const pteranodon: Dinosaur = {
     "Рост занимает 4 ч 30 мин. Вид скользит над водой, делает бочки и цепляется за поверхности; зацепившись при выносливости от 20%, восстанавливает её. Взрослый способен нести краба, лягушку, кролика и курицу (EQG)."
   ],
   stats: [
-    { label: "Вес взрослого", value: 90, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
-    { label: "Скорость взрослого", value: 37.8, max: statScales.speed, unit: "км/ч", source: 'eqg' },
-    { label: "Bite Force", value: 20, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { label: "Время роста", value: 270, max: statScales.growth, unit: "мин", note: "4 ч 30 мин", source: 'eqg' },
-    { label: "Голод: 100→0%", value: 50, max: statScales.hunger, unit: "мин", source: 'eqg' },
-    { label: "Жажда: 100→0%", value: 45, max: statScales.thirst, unit: "мин", source: 'eqg' },
-    { label: "Лимит стаи", value: 6, max: 12, unit: "особей", source: 'eqg' },
-    { label: "Яиц в кладке", value: 4, max: 8, unit: "шт.", note: "Тип гнезда: Debris.", source: 'eqg' },
+    { key: 'weight', label: "Вес взрослого", value: 90, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
+    { key: 'speed', label: "Скорость взрослого", value: 37.8, max: statScales.speed, unit: "км/ч", source: 'eqg' },
+    { key: 'bite', label: "Bite Force", value: 20, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 270, max: statScales.growth, unit: "мин", note: "4 ч 30 мин", source: 'eqg' },
+    { key: 'hunger', label: "Голод: 100→0%", value: 50, max: statScales.hunger, unit: "мин", source: 'eqg' },
+    { key: 'thirst', label: "Жажда: 100→0%", value: 45, max: statScales.thirst, unit: "мин", source: 'eqg' },
+    { key: 'pack', label: "Лимит стаи", value: 6, max: 12, unit: "особей", source: 'eqg' },
+    { key: 'eggs', label: "Яиц в кладке", value: 4, max: 8, unit: "шт.", note: "Тип гнезда: Debris.", source: 'eqg' },
   ],
   growth: [
     {

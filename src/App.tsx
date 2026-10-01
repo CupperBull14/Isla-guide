@@ -9,6 +9,7 @@ import DinosaurDetail from './pages/DinosaurDetail'
 import Guides from './pages/Guides'
 import Mechanics from './pages/Mechanics'
 import NotFound from './pages/NotFound'
+import Tools from './pages/Tools'
 
 export default function App() {
   const location = useLocation()
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/dinosaurs/:id" element={<DinosaurDetail />} />
           <Route path="/guides" element={<Guides />} />
           <Route path="/mechanics" element={<Mechanics />} />
+          <Route path="/tools" element={<Tools />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>

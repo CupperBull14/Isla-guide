@@ -19,14 +19,14 @@ export const beipiaosaurus: Dinosaur = {
     "Рост занимает 3 ч 40 мин. Вид не умеет пастись, зато стая достигает 12 особей, а гнездо Debris — до 8 яиц. Желудок пустеет всего за 30 минут, вода — за 20."
   ],
   stats: [
-    { label: "Вес взрослого", value: 90, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
-    { label: "Скорость взрослого", value: 32, max: statScales.speed, unit: "км/ч", source: 'eqg' },
-    { label: "Bite Force", value: 20, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { label: "Время роста", value: 220, max: statScales.growth, unit: "мин", note: "3 ч 40 мин", source: 'eqg' },
-    { label: "Голод: 100→0%", value: 30, max: statScales.hunger, unit: "мин", source: 'eqg' },
-    { label: "Жажда: 100→0%", value: 20, max: statScales.thirst, unit: "мин", source: 'eqg' },
-    { label: "Лимит стаи", value: 12, max: 12, unit: "особей", source: 'eqg' },
-    { label: "Яиц в кладке", value: 8, max: 8, unit: "шт.", note: "Тип гнезда: Debris.", source: 'eqg' },
+    { key: 'weight', label: "Вес взрослого", value: 90, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
+    { key: 'speed', label: "Скорость взрослого", value: 32, max: statScales.speed, unit: "км/ч", source: 'eqg' },
+    { key: 'bite', label: "Bite Force", value: 20, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 220, max: statScales.growth, unit: "мин", note: "3 ч 40 мин", source: 'eqg' },
+    { key: 'hunger', label: "Голод: 100→0%", value: 30, max: statScales.hunger, unit: "мин", source: 'eqg' },
+    { key: 'thirst', label: "Жажда: 100→0%", value: 20, max: statScales.thirst, unit: "мин", source: 'eqg' },
+    { key: 'pack', label: "Лимит стаи", value: 12, max: 12, unit: "особей", source: 'eqg' },
+    { key: 'eggs', label: "Яиц в кладке", value: 8, max: 8, unit: "шт.", note: "Тип гнезда: Debris.", source: 'eqg' },
   ],
   growth: [
     {

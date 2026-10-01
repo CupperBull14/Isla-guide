@@ -19,14 +19,14 @@ export const hypsilophodon: Dinosaur = {
     "Прямого боя вид не выдерживает (Bite 2, HP равно весу), поэтому играть за него — значит прятаться, лазать и уходить от погони. Малыши ещё не умеют плеваться."
   ],
   stats: [
-    { label: "Вес взрослого", value: 20, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
-    { label: "Скорость взрослого", value: 39.6, max: statScales.speed, unit: "км/ч", source: 'eqg' },
-    { label: "Bite Force", value: 2, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { label: "Время роста", value: 110, max: statScales.growth, unit: "мин", note: "1 ч 50 мин", source: 'eqg' },
-    { label: "Голод: 100→0%", value: 30, max: statScales.hunger, unit: "мин", source: 'eqg' },
-    { label: "Жажда: 100→0%", value: 45, max: statScales.thirst, unit: "мин", source: 'eqg' },
-    { label: "Лимит стаи", value: 10, max: 12, unit: "особей", source: 'eqg' },
-    { label: "Яиц в кладке", value: 6, max: 8, unit: "шт.", note: "Тип гнезда: Debris.", source: 'eqg' },
+    { key: 'weight', label: "Вес взрослого", value: 20, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
+    { key: 'speed', label: "Скорость взрослого", value: 39.6, max: statScales.speed, unit: "км/ч", source: 'eqg' },
+    { key: 'bite', label: "Bite Force", value: 2, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 110, max: statScales.growth, unit: "мин", note: "1 ч 50 мин", source: 'eqg' },
+    { key: 'hunger', label: "Голод: 100→0%", value: 30, max: statScales.hunger, unit: "мин", source: 'eqg' },
+    { key: 'thirst', label: "Жажда: 100→0%", value: 45, max: statScales.thirst, unit: "мин", source: 'eqg' },
+    { key: 'pack', label: "Лимит стаи", value: 10, max: 12, unit: "особей", source: 'eqg' },
+    { key: 'eggs', label: "Яиц в кладке", value: 6, max: 8, unit: "шт.", note: "Тип гнезда: Debris.", source: 'eqg' },
   ],
   growth: [
     {

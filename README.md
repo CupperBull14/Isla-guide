@@ -20,11 +20,11 @@ npm run preview    # локальный просмотр собранной ве
 
 ```
 src/
-  pages/        Home, Dinosaurs, DinosaurDetail, Guides, Mechanics, NotFound
-  components/   layout/, ui/, dinosaur/
-  data/         ВЕСЬ контент: dinosaurs/*.ts, mechanics.ts, guides.ts, sources.ts, site.ts
+  pages/        Home, Dinosaurs, DinosaurDetail, Guides, Mechanics, Tools, NotFound
+  components/   layout/, ui/, dinosaur/, tools/
+  data/         ВЕСЬ контент: dinosaurs/*.ts, mechanics.ts, guides.ts, tools.ts, sources.ts, site.ts
   types/        все интерфейсы
-  utils/        seo.ts (title/description/OG), plural.ts
+  utils/        seo.ts (title/description/OG), dino.ts (расчёты для инструментов), plural.ts
 public/         favicon.svg, og-image.png, robots.txt, _redirects
 ```
 

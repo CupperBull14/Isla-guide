@@ -1,5 +1,9 @@
+/** Машинный ключ параметра — для сравнения и инструментов. */
+export type StatKey = 'weight' | 'speed' | 'bite' | 'growth' | 'hunger' | 'thirst' | 'pack' | 'eggs'
+
 /** Параметр дино. null = «данных нет» (выдумывать цифры запрещено). */
 export interface Stat {
+  key: StatKey
   label: string
   value: number | null
   max: number | null
@@ -132,4 +136,39 @@ export interface FaqItem {
   answer: string
   caveat?: string
   sources: SourceRef[]
+}
+
+/* ---------- Инструменты ---------- */
+
+export type ToolId = 'picker' | 'compare' | 'calc' | 'counter'
+
+export interface ToolInfo {
+  id: ToolId
+  title: string
+  short: string
+  description: string
+}
+
+export type PickerQuestionId = 'diet' | 'group' | 'pace' | 'size' | 'speed' | 'newbie'
+
+export interface PickerOption {
+  id: string
+  label: string
+  hint?: string
+}
+
+export interface PickerQuestion {
+  id: PickerQuestionId
+  title: string
+  options: PickerOption[]
+}
+
+/** Строка сравнения: какой параметр и что считать «лидером». */
+export interface CompareRow {
+  key: StatKey
+  label: string
+  unit: string
+  /** 'high' — выделяем наибольшее, 'low' — наименьшее. */
+  leader: 'high' | 'low'
+  leaderHint: string
 }

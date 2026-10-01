@@ -110,7 +110,7 @@ export default function Home() {
             <h2 className="text-2xl font-bold sm:text-3xl">Разделы сайта</h2>
             <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-moss-500 to-amber-400" />
           </ScrollReveal>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {homeSections.map((section, i) => (
               <ScrollReveal key={section.title} delay={i * 0.07} className="h-full">
                 <SectionCard section={section} />

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, BookOpen, Cog, Grid3x3, PawPrint } from 'lucide-react'
+import { ArrowRight, BookOpen, Cog, Grid3x3, PawPrint, Scale, Sparkles } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import type { HomeSection, SectionIcon } from '../../data/site'
 
@@ -9,6 +9,8 @@ const icons: Record<SectionIcon, LucideIcon> = {
   guides: BookOpen,
   mechanics: Cog,
   matchups: Grid3x3,
+  picker: Sparkles,
+  compare: Scale,
 }
 
 export function SectionCard({ section }: { section: HomeSection }) {

@@ -19,14 +19,14 @@ export const allosaurus: Dinosaur = {
     "Когти (бег + удержание ЛКМ) накладывают стакающееся кровотечение с независимыми таймерами. XGamingServer (12 июн 2026) называет его ближайшим к «королю горы» хищником Evrima. Стая — 3 особи."
   ],
   stats: [
-    { label: "Вес взрослого", value: 2600, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
-    { label: "Скорость взрослого", value: 39.8, max: statScales.speed, unit: "км/ч", source: 'eqg' },
-    { label: "Bite Force", value: 175, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { label: "Время роста", value: 600, max: statScales.growth, unit: "мин", note: "10 ч ", source: 'eqg' },
-    { label: "Голод: 100→0%", value: 60, max: statScales.hunger, unit: "мин", source: 'eqg' },
-    { label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
-    { label: "Лимит стаи", value: 3, max: 12, unit: "особей", source: 'eqg' },
-    { label: "Яиц в кладке", value: 4, max: 8, unit: "шт.", note: "Тип гнезда: Debris.", source: 'eqg' },
+    { key: 'weight', label: "Вес взрослого", value: 2600, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
+    { key: 'speed', label: "Скорость взрослого", value: 39.8, max: statScales.speed, unit: "км/ч", source: 'eqg' },
+    { key: 'bite', label: "Bite Force", value: 175, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 600, max: statScales.growth, unit: "мин", note: "10 ч ", source: 'eqg' },
+    { key: 'hunger', label: "Голод: 100→0%", value: 60, max: statScales.hunger, unit: "мин", source: 'eqg' },
+    { key: 'thirst', label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
+    { key: 'pack', label: "Лимит стаи", value: 3, max: 12, unit: "особей", source: 'eqg' },
+    { key: 'eggs', label: "Яиц в кладке", value: 4, max: 8, unit: "шт.", note: "Тип гнезда: Debris.", source: 'eqg' },
   ],
   growth: [
     {

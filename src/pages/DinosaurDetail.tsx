@@ -1,7 +1,7 @@
 import { usePageMeta } from '../utils/seo'
 import type { ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, Check, X } from 'lucide-react'
+import { ArrowLeft, Calculator, Check, Scale, Swords, X } from 'lucide-react'
 import { PageWrapper } from '../components/layout/PageWrapper'
 import { PageHeader } from '../components/ui/PageHeader'
 import { PatchBadge } from '../components/ui/PatchBadge'
@@ -13,6 +13,7 @@ import { SectionNav, type NavSection } from '../components/dinosaur/SectionNav'
 import { SourcesList } from '../components/dinosaur/SourcesList'
 import { getDinosaurById } from '../data/dinosaurs'
 import { categoryLabels, dietLabels } from '../data/site'
+import { formatMinutes, statValue } from '../utils/dino'
 
 const sections: NavSection[] = [
   { id: 'overview', label: 'Обзор' },
@@ -64,7 +65,37 @@ export default function DinosaurDetail() {
         <ArrowLeft className="h-4 w-4" /> Все динозавры
       </Link>
       <PageHeader title={dino.nameRu} subtitle={`${dino.name} · ${dietLabels[dino.diet]} · ${categoryLabels[dino.category]}`} />
-      <PatchBadge patch={dino.patch} />
+      <div className="flex flex-wrap items-center gap-2">
+        <PatchBadge patch={dino.patch} />
+        {[
+          ['Вес', statValue(dino, 'weight'), 'кг'],
+          ['Скорость', statValue(dino, 'speed'), 'км/ч'],
+          ['Стая до', statValue(dino, 'pack'), ''],
+        ].map(([label, v, unit]) => (
+          <span key={String(label)} className="rounded-full border border-isle-600 bg-isle-800 px-3 py-1 text-xs text-bone-300">
+            {label}: <span className="font-semibold text-bone-100">{v === null ? 'данных нет' : `${Number(v).toLocaleString('ru-RU')} ${unit}`.trim()}</span>
+          </span>
+        ))}
+        <span className="rounded-full border border-isle-600 bg-isle-800 px-3 py-1 text-xs text-bone-300">
+          Рост: <span className="font-semibold text-bone-100">{formatMinutes(statValue(dino, 'growth'))}</span>
+        </span>
+      </div>
+
+      <div className="mt-5 flex flex-wrap gap-2">
+        {[
+          { to: `/tools?tool=compare&ids=${dino.id}`, label: 'Сравнить', Icon: Scale },
+          { to: `/tools?tool=calc&id=${dino.id}`, label: 'Калькулятор роста', Icon: Calculator },
+          { to: `/tools?tool=counter&id=${dino.id}`, label: 'Как играть против', Icon: Swords },
+        ].map(({ to, label, Icon }) => (
+          <Link
+            key={to}
+            to={to}
+            className="inline-flex items-center gap-2 rounded-xl border border-isle-600 bg-isle-800 px-3 py-2 text-sm text-bone-300 transition-colors hover:border-amber-500/60 hover:text-amber-300"
+          >
+            <Icon className="h-4 w-4" aria-hidden /> {label}
+          </Link>
+        ))}
+      </div>
 
       <div className="mt-8">
         <SectionNav sections={sections} />

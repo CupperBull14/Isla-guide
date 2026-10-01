@@ -19,14 +19,14 @@ export const tyrannosaurus: Dinosaur = {
     "Полный рост занимает 35 ч 33 мин — самый долгий в игре. Все виды укуса вызывают переломы, а crush позволяет прижать и добить цель легче половины веса Rex. С 50% роста открывается Ambush: ускорение на 15 секунд с перезарядкой в минуту. С 5 тонн веса шаги становятся слышны."
   ],
   stats: [
-    { label: "Вес взрослого", value: 9300, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
-    { label: "Скорость взрослого", value: 29, max: statScales.speed, unit: "км/ч", source: 'eqg' },
-    { label: "Bite Force", value: 699, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { label: "Время роста", value: 2133, max: statScales.growth, unit: "мин", note: "35 ч 33 мин", source: 'eqg' },
-    { label: "Голод: 100→0%", value: 75, max: statScales.hunger, unit: "мин", source: 'eqg' },
-    { label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
-    { label: "Лимит стаи", value: 2, max: 12, unit: "особей", source: 'eqg' },
-    { label: "Яиц в кладке", value: 5, max: 8, unit: "шт.", note: "Тип гнезда: Debris.", source: 'eqg' },
+    { key: 'weight', label: "Вес взрослого", value: 9300, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
+    { key: 'speed', label: "Скорость взрослого", value: 29, max: statScales.speed, unit: "км/ч", source: 'eqg' },
+    { key: 'bite', label: "Bite Force", value: 699, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 2133, max: statScales.growth, unit: "мин", note: "35 ч 33 мин", source: 'eqg' },
+    { key: 'hunger', label: "Голод: 100→0%", value: 75, max: statScales.hunger, unit: "мин", source: 'eqg' },
+    { key: 'thirst', label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
+    { key: 'pack', label: "Лимит стаи", value: 2, max: 12, unit: "особей", source: 'eqg' },
+    { key: 'eggs', label: "Яиц в кладке", value: 5, max: 8, unit: "шт.", note: "Тип гнезда: Debris.", source: 'eqg' },
   ],
   growth: [
     {

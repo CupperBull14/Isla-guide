@@ -19,14 +19,14 @@ export const triceratops: Dinosaur = {
     "Бой строится на «точках» атак (каждая атака тратит одну, точка восстанавливается за 30 секунд), нокдауне и режиме спарринга (Ctrl). XGamingServer (12 июн 2026): Triceratops, развернувшийся лицом к нападающему, срывает большинство засад."
   ],
   stats: [
-    { label: "Вес взрослого", value: 9500, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
-    { label: "Скорость взрослого", value: 23.4, max: statScales.speed, unit: "км/ч", source: 'eqg' },
-    { label: "Bite Force", value: 900, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону. ⚠️ EQG: 900 на странице вида, 600 в сводной таблице", source: 'eqg' },
-    { label: "Время роста", value: 1750, max: statScales.growth, unit: "мин", note: "29 ч 10 мин", source: 'eqg' },
-    { label: "Голод: 100→0%", value: 90, max: statScales.hunger, unit: "мин", source: 'eqg' },
-    { label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
-    { label: "Лимит стаи", value: 4, max: 12, unit: "особей", source: 'eqg' },
-    { label: "Яиц в кладке", value: 6, max: 8, unit: "шт.", note: "Тип гнезда: Mound.", source: 'eqg' },
+    { key: 'weight', label: "Вес взрослого", value: 9500, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
+    { key: 'speed', label: "Скорость взрослого", value: 23.4, max: statScales.speed, unit: "км/ч", source: 'eqg' },
+    { key: 'bite', label: "Bite Force", value: 900, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону. ⚠️ EQG: 900 на странице вида, 600 в сводной таблице", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 1750, max: statScales.growth, unit: "мин", note: "29 ч 10 мин", source: 'eqg' },
+    { key: 'hunger', label: "Голод: 100→0%", value: 90, max: statScales.hunger, unit: "мин", source: 'eqg' },
+    { key: 'thirst', label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
+    { key: 'pack', label: "Лимит стаи", value: 4, max: 12, unit: "особей", source: 'eqg' },
+    { key: 'eggs', label: "Яиц в кладке", value: 6, max: 8, unit: "шт.", note: "Тип гнезда: Mound.", source: 'eqg' },
   ],
   growth: [
     {

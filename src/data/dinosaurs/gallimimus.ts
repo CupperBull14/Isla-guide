@@ -19,14 +19,14 @@ export const gallimimus: Dinosaur = {
     "Вид построен вокруг скорости и стаи: пассивный бафф ускоряет медленных членов группы, а «Mobilize Call» временно разгоняет соседей. Атаки не вызывают кровотечения, защита — бегство."
   ],
   stats: [
-    { label: "Вес взрослого", value: 535, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
-    { label: "Скорость взрослого", value: 45.6, max: statScales.speed, unit: "км/ч", source: 'eqg' },
-    { label: "Bite Force", value: 25, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { label: "Время роста", value: 325, max: statScales.growth, unit: "мин", note: "5 ч 25 мин", source: 'eqg' },
-    { label: "Голод: 100→0%", value: 45, max: statScales.hunger, unit: "мин", source: 'eqg' },
-    { label: "Жажда: 100→0%", value: 45, max: statScales.thirst, unit: "мин", source: 'eqg' },
-    { label: "Лимит стаи", value: 8, max: 12, unit: "особей", source: 'eqg' },
-    { label: "Яиц в кладке", value: 6, max: 8, unit: "шт.", note: "Тип гнезда: Mound.", source: 'eqg' },
+    { key: 'weight', label: "Вес взрослого", value: 535, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
+    { key: 'speed', label: "Скорость взрослого", value: 45.6, max: statScales.speed, unit: "км/ч", source: 'eqg' },
+    { key: 'bite', label: "Bite Force", value: 25, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 325, max: statScales.growth, unit: "мин", note: "5 ч 25 мин", source: 'eqg' },
+    { key: 'hunger', label: "Голод: 100→0%", value: 45, max: statScales.hunger, unit: "мин", source: 'eqg' },
+    { key: 'thirst', label: "Жажда: 100→0%", value: 45, max: statScales.thirst, unit: "мин", source: 'eqg' },
+    { key: 'pack', label: "Лимит стаи", value: 8, max: 12, unit: "особей", source: 'eqg' },
+    { key: 'eggs', label: "Яиц в кладке", value: 6, max: 8, unit: "шт.", note: "Тип гнезда: Mound.", source: 'eqg' },
   ],
   growth: [
     {

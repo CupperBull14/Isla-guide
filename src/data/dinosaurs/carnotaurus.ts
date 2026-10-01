@@ -19,14 +19,14 @@ export const carnotaurus: Dinosaur = {
     "Вид специализируется на рывках: ПКМ — таран-charge с перезарядкой, Alt + ЛКМ — быстрый укус. Он силён на открытой местности и хуже в лесу; на полном спринте у него широкий радиус поворота."
   ],
   stats: [
-    { label: "Вес взрослого", value: 1300, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
-    { label: "Скорость взрослого", value: 49.5, max: statScales.speed, unit: "км/ч", source: 'eqg' },
-    { label: "Bite Force", value: 150, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
-    { label: "Время роста", value: 460, max: statScales.growth, unit: "мин", note: "7 ч 40 мин", source: 'eqg' },
-    { label: "Голод: 100→0%", value: 75, max: statScales.hunger, unit: "мин", source: 'eqg' },
-    { label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
-    { label: "Лимит стаи", value: 3, max: 12, unit: "особей", source: 'eqg' },
-    { label: "Яиц в кладке", value: 3, max: 8, unit: "шт.", note: "Тип гнезда: Debris. ⚠️ EQG: 3 на странице вида, 6 в сводной таблице", source: 'eqg' },
+    { key: 'weight', label: "Вес взрослого", value: 1300, max: statScales.weight, unit: "кг", scale: 'sqrt', source: 'eqg' },
+    { key: 'speed', label: "Скорость взрослого", value: 49.5, max: statScales.speed, unit: "км/ч", source: 'eqg' },
+    { key: 'bite', label: "Bite Force", value: 150, max: statScales.bite, unit: "", scale: 'sqrt', note: "Bite — не эквивалентно урону.", source: 'eqg' },
+    { key: 'growth', label: "Время роста", value: 460, max: statScales.growth, unit: "мин", note: "7 ч 40 мин", source: 'eqg' },
+    { key: 'hunger', label: "Голод: 100→0%", value: 75, max: statScales.hunger, unit: "мин", source: 'eqg' },
+    { key: 'thirst', label: "Жажда: 100→0%", value: 60, max: statScales.thirst, unit: "мин", source: 'eqg' },
+    { key: 'pack', label: "Лимит стаи", value: 3, max: 12, unit: "особей", source: 'eqg' },
+    { key: 'eggs', label: "Яиц в кладке", value: 3, max: 8, unit: "шт.", note: "Тип гнезда: Debris. ⚠️ EQG: 3 на странице вида, 6 в сводной таблице", source: 'eqg' },
   ],
   growth: [
     {
