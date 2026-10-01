@@ -104,13 +104,6 @@ export const pachycephalosaurus: Dinosaur = {
       "note": "Таран не наносит урон целям тяжелее 3 т, а Maiasaura весит около 3,7 т (EQG).",
       "basis": "derived",
       "source": "eqg"
-    },
-    {
-      "opponent": "tyrannosaurus",
-      "verdict": "flee",
-      "note": "Взрослый Rex может прижать и добить цель легче ~4650 кг; не принимай бой (EQG).",
-      "basis": "derived",
-      "source": "eqg-tyrannosaurus"
     }
   ],
   combat: [
@@ -156,13 +149,6 @@ export const pachycephalosaurus: Dinosaur = {
       "title": "The Isle: Best Beginner Dinosaurs (Evrima) — официальный гайд",
       "url": "https://www.theisle-game.com/en/guides/best-beginner-dinosaurs-evrima",
       "date": "2026-05-30",
-      "accessed": "2026-10-01"
-    },
-    {
-      "id": "eqg-tyrannosaurus",
-      "title": "Evrima Quick Guide — Tyrannosaurus",
-      "url": "https://www.evrimaquickguide.com/playables/quick-facts-carnivores/tyrannosaurus",
-      "date": "не указана",
       "accessed": "2026-10-01"
     }
   ],

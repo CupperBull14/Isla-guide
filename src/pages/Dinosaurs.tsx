@@ -38,7 +38,7 @@ export default function Dinosaurs() {
       <PatchBadge patch={currentPatch.number} className="mb-6" />
 
       <div role="tablist" className="mb-6 inline-flex rounded-xl border border-isle-600 bg-isle-800 p-1">
-        {([['catalog', 'Каталог'], ['matrix', 'Матрица матчапов']] as const).map(([id, label]) => (
+        {([['catalog', 'Карточки'], ['matrix', 'Матрица']] as const).map(([id, label]) => (
           <button
             key={id}
             role="tab"
