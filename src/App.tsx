@@ -8,6 +8,7 @@ import Dinosaurs from './pages/Dinosaurs'
 import DinosaurDetail from './pages/DinosaurDetail'
 import Guides from './pages/Guides'
 import Mechanics from './pages/Mechanics'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   const location = useLocation()
@@ -18,6 +19,12 @@ export default function App() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <a
+        href="#main"
+        className="sr-only z-[60] rounded-lg bg-amber-400 px-4 py-2 font-semibold text-isle-950 focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+      >
+        К содержимому
+      </a>
       <Navbar />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
@@ -26,7 +33,7 @@ export default function App() {
           <Route path="/dinosaurs/:id" element={<DinosaurDetail />} />
           <Route path="/guides" element={<Guides />} />
           <Route path="/mechanics" element={<Mechanics />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
       <Footer />

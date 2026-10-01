@@ -97,7 +97,7 @@ export function MatchupMatrix() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Поиск по имени"
-            className="w-full rounded-xl border border-isle-600 bg-isle-800 py-2.5 pl-10 pr-3 text-sm text-bone-100 placeholder:text-bone-500 focus:border-amber-500/60 focus:outline-none"
+            className="w-full rounded-xl border border-isle-600 bg-isle-800 py-2.5 pl-10 pr-3 text-base text-bone-100 sm:text-sm placeholder:text-bone-500 focus:border-amber-500/60 focus:outline-none"
           />
         </div>
         <div className="flex flex-wrap gap-2">
@@ -126,13 +126,15 @@ export function MatchupMatrix() {
       ) : (
         <div className="max-h-[75vh] overflow-auto rounded-xl border border-isle-600 bg-isle-900">
           <table className="border-separate border-spacing-0 text-xs">
+            <caption className="sr-only">Матрица матчапов: строка — твой динозавр, столбец — противник</caption>
             <thead>
               <tr>
-                <th className="sticky left-0 top-0 z-30 min-w-[7.5rem] border-b border-r border-isle-600 bg-isle-900 p-2 text-left font-medium text-bone-500">
+                <th scope="col" className="sticky left-0 top-0 z-30 min-w-[7.5rem] border-b border-r border-isle-600 bg-isle-900 p-2 text-left font-medium text-bone-500">
                   твой ↓ · против →
                 </th>
                 {list.map((c) => (
                   <th
+                    scope="col"
                     key={c.id}
                     className={`sticky top-0 z-20 h-32 min-w-[40px] border-b border-isle-600 p-1 align-bottom font-medium transition-colors ${
                       hover?.col === c.id ? 'bg-isle-700 text-amber-300' : 'bg-isle-900 text-bone-300'
@@ -156,6 +158,7 @@ export function MatchupMatrix() {
                     transition={{ duration: 0.25, delay: reduce || !intro.current ? 0 : ri * 0.03 }}
                   >
                     <th
+                      scope="row"
                       className={`sticky left-0 z-10 whitespace-nowrap border-r border-t border-isle-600 p-2 text-left font-medium transition-colors ${
                         hover?.row === r.id ? 'bg-isle-700 text-amber-300' : 'bg-isle-900 text-bone-300'
                       }`}

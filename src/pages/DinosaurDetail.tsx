@@ -1,3 +1,4 @@
+import { usePageMeta } from '../utils/seo'
 import type { ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, Check, X } from 'lucide-react'
@@ -40,6 +41,11 @@ function Section({ id, title, children }: { id: string; title: string; children:
 export default function DinosaurDetail() {
   const { id } = useParams<{ id: string }>()
   const dino = id ? getDinosaurById(id) : undefined
+  usePageMeta(
+    dino
+      ? { title: `${dino.nameRu} (${dino.name}) — гайд`, description: `${dino.overview[0].slice(0, 150).trim()}…` }
+      : { title: 'Динозавр не найден', description: 'Такого динозавра в базе нет.', noindex: true },
+  )
 
   if (!dino) {
     return (

@@ -1,3 +1,4 @@
+import { usePageMeta } from '../utils/seo'
 import { useState } from 'react'
 import { PageWrapper } from '../components/layout/PageWrapper'
 import { PageHeader } from '../components/ui/PageHeader'
@@ -9,6 +10,7 @@ import { mechanics } from '../data/mechanics'
 import { currentPatch } from '../data/site'
 
 export default function Mechanics() {
+  usePageMeta({ title: 'Механики', description: 'Механики The Isle: Evrima — рост, Prime и Entomb, диета, стамина, гнездование, группы и серверы. Каждый факт с источником.' })
   const [openId, setOpenId] = useState<string | null>(null)
 
   return (

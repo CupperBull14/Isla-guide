@@ -14,6 +14,7 @@ export function PageWrapper({ children, fullBleed = false }: PageWrapperProps) {
 
   return (
     <motion.main
+      id="main"
       initial={{ opacity: 0, y: shift }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -shift / 2 }}

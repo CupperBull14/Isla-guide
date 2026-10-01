@@ -1,3 +1,4 @@
+import { usePageMeta } from '../utils/seo'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
@@ -18,6 +19,7 @@ const heroItem = {
 }
 
 export default function Home() {
+  usePageMeta({ description: 'Фанатский справочник по The Isle: Evrima: гайды по 22 динозаврам, стадии роста, матрица матчапов и механики. Только Evrima, с источниками и датами.' })
   const dinoCount = dinosaurs.length
   const mechCount = mechanics.length
 

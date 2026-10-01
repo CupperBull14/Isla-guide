@@ -15,6 +15,15 @@
   }
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #f6b94a;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
 ::selection {
   background: rgba(246, 185, 74, 0.35);
   color: #fff;

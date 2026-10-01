@@ -1,3 +1,4 @@
+import { usePageMeta } from '../utils/seo'
 import { useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Search } from 'lucide-react'
@@ -16,6 +17,7 @@ type DietFilter = Diet | 'all'
 const dietFilters: readonly DietFilter[] = ['all', 'carnivore', 'herbivore', 'omnivore']
 
 export default function Dinosaurs() {
+  usePageMeta({ title: 'Динозавры', description: 'Каталог всех играбельных динозавров The Isle: Evrima: параметры, рост, питание и матрица матчапов с источниками.' })
   const [tab, setTab] = useState<Tab>('catalog')
   const [diet, setDiet] = useState<DietFilter>('all')
   const [query, setQuery] = useState('')
@@ -62,7 +64,7 @@ export default function Dinosaurs() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Поиск: название, класс, тег"
-                className="w-full rounded-xl border border-isle-600 bg-isle-800 py-2.5 pl-10 pr-3 text-sm text-bone-100 placeholder:text-bone-500 focus:border-amber-500/60 focus:outline-none"
+                className="w-full rounded-xl border border-isle-600 bg-isle-800 py-2.5 pl-10 pr-3 text-base text-bone-100 sm:text-sm placeholder:text-bone-500 focus:border-amber-500/60 focus:outline-none"
               />
             </div>
             <div className="flex flex-wrap gap-2">

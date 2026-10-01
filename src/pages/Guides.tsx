@@ -1,3 +1,4 @@
+import { usePageMeta } from '../utils/seo'
 import { useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Check, Search } from 'lucide-react'
@@ -132,7 +133,7 @@ function Glossary() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Поиск по термину (RU / EN)"
-          className="w-full rounded-xl border border-isle-600 bg-isle-800 py-2.5 pl-10 pr-3 text-sm text-bone-100 placeholder:text-bone-500 focus:border-amber-500/60 focus:outline-none"
+          className="w-full rounded-xl border border-isle-600 bg-isle-800 py-2.5 pl-10 pr-3 text-base text-bone-100 sm:text-sm placeholder:text-bone-500 focus:border-amber-500/60 focus:outline-none"
         />
       </div>
       <motion.ul layout className="grid gap-3 sm:grid-cols-2">
@@ -170,6 +171,7 @@ function Faq() {
 }
 
 export default function Guides() {
+  usePageMeta({ title: 'Гайды', description: 'Первый день на острове, глоссарий терминов и ответы на частые вопросы по The Isle: Evrima.' })
   const [tab, setTab] = useState<Tab>('day')
   return (
     <PageWrapper>
