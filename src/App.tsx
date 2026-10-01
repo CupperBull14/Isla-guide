@@ -1,15 +1,15 @@
-import { useEffect } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
 import Home from './pages/Home'
-import Dinosaurs from './pages/Dinosaurs'
-import DinosaurDetail from './pages/DinosaurDetail'
-import Guides from './pages/Guides'
-import Mechanics from './pages/Mechanics'
-import NotFound from './pages/NotFound'
-import Tools from './pages/Tools'
+const Dinosaurs = lazy(() => import('./pages/Dinosaurs'))
+const DinosaurDetail = lazy(() => import('./pages/DinosaurDetail'))
+const Guides = lazy(() => import('./pages/Guides'))
+const Mechanics = lazy(() => import('./pages/Mechanics'))
+const NotFound = lazy(() => import('./pages/NotFound'))
+const Tools = lazy(() => import('./pages/Tools'))
 
 export default function App() {
   const location = useLocation()
@@ -27,6 +27,7 @@ export default function App() {
         К содержимому
       </a>
       <Navbar />
+      <Suspense fallback={<div className="flex-1" aria-busy="true" />}>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
+      </Suspense>
       <Footer />
     </div>
   )

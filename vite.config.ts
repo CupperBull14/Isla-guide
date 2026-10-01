@@ -7,5 +7,16 @@ export default defineConfig(({ mode }) => {
   return {
     base: env.VITE_BASE || '/',
     plugins: [react()],
+    build: {
+      rollupOptions: {
+        output: {
+          // Библиотеки — отдельными файлами: кэшируются браузером между обновлениями контента
+          manualChunks: {
+            react: ['react', 'react-dom', 'react-router-dom'],
+            motion: ['framer-motion'],
+          },
+        },
+      },
+    },
   }
 })
