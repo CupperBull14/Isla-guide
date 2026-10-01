@@ -48,29 +48,6 @@ public/         favicon.svg, og-image.png, robots.txt, _redirects
 
 Фактическую базу (факты + источники) веди в `БАЗА_ЗНАНИЙ.md`, прогресс — в `СТАТУС.md`.
 
-## Деплой
-
-### Vercel (через GitHub) — рекомендуется
-
-1. Создай репозиторий на GitHub и запушь проект (`git remote add origin …`, `git push -u origin master`).
-2. На vercel.com: **Add New → Project → Import** репозиторий.
-3. Framework Preset — **Vite**; Build Command `npm run build`; Output Directory `dist`.
-4. Deploy. Маршрутизация SPA настроена в `vercel.json`. Дальше каждый `git push` публикуется автоматически.
-
-### Netlify Drop (без GitHub)
-
-1. Выполни `npm run build`.
-2. Открой app.netlify.com/drop и перетащи папку **`dist`**. Файл `public/_redirects` попадёт в `dist` и обеспечит переходы по прямым ссылкам.
-
-### После деплоя
-
-- В `index.html` замени относительный `og:image` на абсолютный адрес (`https://твой-домен/og-image.png`): соцсети не читают относительные пути.
-- Мета-теги страниц обновляются скриптом (`src/utils/seo.ts`); боты без JS видят значения по умолчанию из `index.html`.
-
-### GitHub Pages (через GitHub Actions)
-
-Уже настроено: `.github/workflows/deploy.yml`, `base` в `vite.config.ts` (берётся из `VITE_BASE`), `basename` у роутера и `404.html` для прямых ссылок.
-
 1. Запушь проект в ветку `master`.
 2. В репозитории: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 3. Вкладка **Actions** покажет сборку; сайт появится по адресу `https://ЛОГИН.github.io/ИМЯ_РЕПОЗИТОРИЯ/`.
